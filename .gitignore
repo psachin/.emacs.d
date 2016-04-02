@@ -1,0 +1,5 @@
+# Ignored file for .emacs.d
+
+ac-comphist.dat
+elpa/
+history

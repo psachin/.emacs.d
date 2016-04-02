@@ -7,27 +7,29 @@
 ;; (setq package-list package-activated-list)
 
 ;; My packages
-(setq package-list '(ac-ispell
-		     autopair
-		     company
-		     find-file-in-project
-		     insert-shebang
-		     jedi
-		     auto-complete
-		     epc
-		     ctable
-		     concurrent
-		     deferred
-		     magit
-		     git-commit
-		     magit-popup
-		     markdown-mode
-		     popup
-		     swiper
-		     with-editor
-		     dash
-		     async
-		     yasnippet))
+(defvar package-list '(
+		       ac-ispell
+		       autopair
+		       company
+		       find-file-in-project
+		       insert-shebang
+		       jedi
+		       auto-complete
+		       epc
+		       ctable
+		       concurrent
+		       deferred
+		       magit
+		       git-timemachine
+		       git-commit
+		       magit-popup
+		       markdown-mode
+		       popup
+		       swiper
+		       with-editor
+		       dash
+		       async
+		       yasnippet))
 
 
 (unless package-archive-contents

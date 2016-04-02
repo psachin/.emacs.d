@@ -1,0 +1,19 @@
+* .emacs.d
+
+** Usage
+   - Clone this repo(Warning: Backup your =~/.emacs.d/=)
+     #+BEGIN_SRC sh
+       git clone http://github.com/psachin/.emacs.d.git ~/.emacs.d
+     #+END_SRC
+
+   - Update submodules
+     #+BEGIN_SRC sh
+       git submodule init
+       git submodule update
+     #+END_SRC
+
+   - Edit =;; Personal info= section in file =general_config.el=
+   - Start Emacs
+
+** Gnus
+   - Optionally you can edit parameter in =gnus.el= and copy the file as =~/.gnus.el=

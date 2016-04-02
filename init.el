@@ -1,16 +1,7 @@
 ;; load other configs
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-
 (load-file "~/.emacs.d/general_config.el")
+(load-file "~/.emacs.d/install.el")
 (load-file "~/.emacs.d/defalias.el")
 (load-file "~/.emacs.d/kbd_macro.el")
 (load-file "~/.emacs.d/package_init.el")
@@ -23,14 +14,6 @@
  '(ac-ispell-fuzzy-limit 4)
  '(ac-ispell-requires 4)
  '(custom-enabled-themes (quote (tango-dark)))
- '(erc-away-nickname "psachin_")
- '(erc-email-userid "psachin@redhat.com")
- '(erc-nick "psachin")
- '(erc-port 6667)
- '(erc-prompt-for-channel-key nil)
- '(erc-prompt-for-password nil)
- '(erc-server "irc.devel.redhat.com")
- '(erc-user-full-name "Sachin Patil")
  '(insert-shebang-file-types
    (quote
     (("py" . "python")
@@ -47,7 +30,7 @@
      (ruby "ruby"))))
  '(package-selected-packages
    (quote
-    (find-file-in-project robe markdown-mode jedi yasnippet ac-ispell insert-shebang magit company autopair)))
+    (git-timemachine find-file-in-project robe markdown-mode jedi yasnippet ac-ispell insert-shebang magit company autopair)))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t))
 (custom-set-faces
