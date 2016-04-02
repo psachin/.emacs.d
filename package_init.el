@@ -3,10 +3,7 @@
 (global-company-mode t)
 (global-auto-complete-mode t)
 (autopair-global-mode t)
-(run-python)
-
-(add-to-list 'python-shell-completion-native-disabled-interpreters
-	     "python")
+;; (run-python)
 
 ;; Completion words longer than 4 characters
 (custom-set-variables

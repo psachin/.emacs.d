@@ -6,9 +6,8 @@
 ;; Below snippet will store installed package list in a variable -- package-list
 ;; (setq package-list package-activated-list)
 
-;; My packages
-(defvar package-list '(
-		       ac-ispell
+;; My packages(add your packages here)
+(defvar package-list '(ac-ispell
 		       autopair
 		       company
 		       find-file-in-project
@@ -35,7 +34,7 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-; install the missing packages
+;; Install the missing packages
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
