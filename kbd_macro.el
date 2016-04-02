@@ -1,6 +1,5 @@
-;;; emacs_kbd_macro.el
-;; this is where I define my keyboard macros.
-
+;;; kbd_macro.el
+;; This is where I define my keyboard macros.
 
 (defun switch_buffer ()
   "switch to next window"
@@ -17,12 +16,10 @@
    )
 ;; set <F8> key for killing buffer
 (global-set-key (kbd "<f8>") 'kill_buffer)
-
 ;; set <F9> key for delete present window
 (global-set-key (kbd "<f9>") 'delete-window)
 ;; set <F10> key for delete all other windows except THIS
 (global-set-key (kbd "<f6>") 'delete-other-windows)
-
 
 (global-set-key (kbd "RET") 'newline-and-indent)
 
@@ -47,5 +44,18 @@
 ;; re-visit a file in current buffer when it is changed by an external program.
 (global-set-key "\C-cr" 'revert-buffer)
 
+;; Manage window size
+(global-set-key (kbd "<C-up>") 'enlarge-window)
+(global-set-key (kbd "<C-down>") 'shrink-window)
+(global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
+(global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
 
-(provide 'emacs_kbd_macro)
+;; fold-this
+(global-set-key (kbd "C-c C-f") 'fold-this-all)
+(global-set-key (kbd "C-c C-F") 'fold-this)
+(global-set-key (kbd "C-c M-f") 'fold-this-unfold-all)
+
+;; Hide DOT files
+(global-set-key (kbd "M-o") 'dired-omit-mode)
+
+(provide 'kbd_macro)

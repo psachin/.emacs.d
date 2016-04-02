@@ -1,4 +1,4 @@
-
+;; Default aliases
 
 (defalias 'rs 'replace-string)
 (defalias 'eb 'eval-buffer)
@@ -7,7 +7,7 @@
 (defalias 'cg 'customize-group)
 
 (defalias 'ms 'magit-status)
-(defalias 'log 'magit-display-log)
+(defalias 'log 'magit-log)
 
 ;; For easier access to regex search/replace.
 (defalias 'qrr 'query-replace-regexp)
@@ -17,4 +17,4 @@
 
 (defalias 'ur 'uncomment-region)
 
-(provide 'emacs_defalias)
+(provide 'defalias)

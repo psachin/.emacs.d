@@ -1,0 +1,3 @@
+[submodule "extensions/hidepw"]
+	path = extensions/hidepw
+	url = https://github.com/psachin/hidepw.git

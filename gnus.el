@@ -1,3 +1,5 @@
+;; gnus.el
+
 (setq user-mail-address "iclcoolster@gmail.com")
 (setq user-full-name "Sachin")
 

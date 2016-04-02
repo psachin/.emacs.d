@@ -4,7 +4,7 @@
 
 ;; Personal info
 (setq user-full-name "Sachin"
-      user-mail-address "iclcoolster@gmail.com")
+      user-mail-address "psachin@redhat.com")
 
 ;; start emacs server
 (require 'server)
@@ -17,12 +17,10 @@
 ;; add marmalade repo
 (require 'package)
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
+             '("marmalade" . "http://marmalade-repo.org/packages/")
+	     '("melpa" . "http://melpa.milkbox.net/packages/"))
 
 
-;; melpa repo
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 ;; --------------------
 
@@ -35,7 +33,7 @@
 ;; 10 mins emacs for clojure
 (setq-default inhibit-startup-screen t)
 
-;; show matching parenthesis 
+;; show matching parenthesis
 (show-paren-mode t)
 (setq show-paren-style 'parenthesis) ; highlight just brackets
 ;; (setq show-paren-style 'expression) ; highlight entire bracket expression
@@ -101,8 +99,34 @@
 ;; Fill a line with space after a period
 (setq sentence-end-double-space nil)
 
+;; hide DOT files with M-o
+(require 'dired-x)
+(setq dired-omit-files "^\\...+$")
+
+(add-hook 'dired-mode-hook
+	  (lambda ()
+	    ;; Set dired-x buffer-local variables here.  For example:
+	    (dired-omit-mode 1)
+	    ))
+
+;; --------------------
+(setq visible-bell t)
 ;; --------------------
 
+
+;; extending support for other languages so that we can execute them
+;; in org mode
+;; http://www.johndcook.com/blog/2012/02/09/python-org-mode/
+(org-babel-do-load-languages
+    'org-babel-load-languages '((python . t)
+				(R . t)
+				(sh . t)
+				(emacs-lisp . t)
+				(clojure . t)
+				(C . t)
+				(ruby . t)))
+
+;; --------------------
 (defun pluralize (word count &optional plural)
   "Pluralize the word."
   (if (= count 1)
@@ -190,7 +214,7 @@
 	(setq count (1+ count)))
       (if (zerop count)
 	  (message "buffer has no words.")
-	(message "buffer approximately has %d %s." count 
+	(message "buffer approximately has %d %s." count
 		 (pluralize "word" count))))))
 (global-set-key (kbd "C-x c") 'count-words-buffer)
 
@@ -283,26 +307,26 @@ buffer is not visiting a file."
 
 
 ;;; for octopress
-(setq org-publish-project-alist
-      '(("blog" .  (:base-directory "/home/sachin/tmp/octopress/"
-				    :base-extension "org"
-				    :publishing-directory "/home/sachin/tmp/octopress/source/_posts/"
-				    :sub-superscript ""
-				    :recursive t
-				    :publishing-function org-publish-org-to-octopress
-				    :headline-levels 4
-				    :html-extension "markdown"
-				    :octopress-extension "markdown"
-				    :body-only t))
-	("blog-extra" . (:base-directory "/home/sachin/tmp/octopress/"
-					 :publishing-directory "/home/sachin/tmp/octopress/source/"
-					 :base-extension "css\\|pdf\\|png\\|jpg\\|gif\\|svg"
-					 :publishing-function org-publish-attachment
-					 :recursive t
-					 :author nil
-					 ))
-	("blog" . (:components ("blog-org" "blog-extra")))
-	))
+;; (setq org-publish-project-alist
+;;       '(("blog" .  (:base-directory "/home/sachin/tmp/octopress/"
+;; 				    :base-extension "org"
+;; 				    :publishing-directory "/home/sachin/tmp/octopress/source/_posts/"
+;; 				    :sub-superscript ""
+;; 				    :recursive t
+;; 				    :publishing-function org-publish-org-to-octopress
+;; 				    :headline-levels 4
+;; 				    :html-extension "markdown"
+;; 				    :octopress-extension "markdown"
+;; 				    :body-only t))
+;; 	("blog-extra" . (:base-directory "/home/sachin/tmp/octopress/"
+;; 					 :publishing-directory "/home/sachin/tmp/octopress/source/"
+;; 					 :base-extension "css\\|pdf\\|png\\|jpg\\|gif\\|svg"
+;; 					 :publishing-function org-publish-attachment
+;; 					 :recursive t
+;; 					 :author nil
+;; 					 ))
+;; 	("blog" . (:components ("blog-org" "blog-extra")))
+;; 	))
 
 ;; Source: http://blog.paphus.com/blog/2012/08/01/introducing-octopress-blogging-for-org-mode/
 (defun save-then-publish ()
@@ -311,8 +335,8 @@ buffer is not visiting a file."
   (org-save-all-org-buffers)
   (org-publish-current-project))
 
-(add-to-list 'load-path "/home/sachin/github/orgmode-octopress/")
-(require 'org-octopress)
+;; (add-to-list 'load-path "/home/sachin/github/orgmode-octopress/")
+;; (require 'org-octopress)
 
 
 (define-key global-map (kbd "RET") 'newline-and-indent)
@@ -347,12 +371,25 @@ a query prompt otherwise."
 		  )))))
 
 (defun screenshot-frame ()
-    "Take a screenshot of 400x200 pixels of the Emacs frame."
-      (interactive)
-      (shell-command-to-string
-       (concat "sleep 1; "
-	       "import -window 0x2e00006 "
-	       "-crop 400x200+13+0 +repage ~/frames/`date +%s`.png")))
+  "Take screenshot.
+Default image ~/screenshots/TIMESTAMP.png
+Usage:
+M-x screenshot-frame
+Enter custom-name or RET to save image with timestamp"
+  (interactive)
+  (let* ((insert-default-directory t)
+	 (screenshots-dir "~/screenshots/")
+	 (sframe-name (concat (format-time-string "%d-%b-%Y-%T") ".png"))
+	 (sframe-full-path
+	  (read-file-name "Screenshot name: " screenshots-dir
+			  (concat screenshots-dir sframe-name))))
+
+    (if (not (file-accessible-directory-p screenshots-dir))
+	(make-directory-internal screenshots-dir))
+
+    (shell-command-to-string
+     (concat "import " sframe-full-path))
+    (message "Screenshot saved as %s" sframe-full-path)))
 
 (defun surround(tag)
   "Surround word within TAG.
@@ -366,5 +403,4 @@ a query prompt otherwise."
   (backward-char)
   (yank))
 
-(provide 'emacs_general_config)
-
+(provide 'general_config)
