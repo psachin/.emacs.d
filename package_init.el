@@ -17,6 +17,26 @@
 (yas-global-mode t)
 (setq yas-snippet-dirs "~/.emacs.d/snippets/")
 
+;; hidepw
+(add-to-list 'load-path "~/.emacs.d/extensions/hidepw/")
+(require 'hidepw)
+
+(add-to-list 'auto-mode-alist
+	     '("\\.gpg\\'" . (lambda () (hidepw-mode))))
+
+;; insert-shebang
+(add-hook 'find-file-hook 'insert-shebang)
+
+;; ---------- LaTeX ----------
+(require 'ox-latex)
+(add-to-list 'org-latex-classes
+             '("beamer"
+               "\\documentclass\[presentation\]\{beamer\}"
+               ("\\section\{%s\}" . "\\section*\{%s\}")
+               ("\\subsection\{%s\}" . "\\subsection*\{%s\}")
+               ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}")))
+
+
 (setq org-latex-listings 'minted)
 
 (setq org-export-latex-custom-lang-environments
@@ -33,15 +53,6 @@
   '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
     "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
     "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
-
-;; hidepw
-(add-to-list 'load-path "~/.emacs.d/extensions/hidepw/")
-(require 'hidepw)
-
-(add-to-list 'auto-mode-alist
-	     '("\\.gpg\\'" . (lambda () (hidepw-mode))))
-
-;; insert-shebang
-(add-hook 'find-file-hook 'insert-shebang)
+;; --------------------
 
 (provide 'package_init)
