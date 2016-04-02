@@ -29,8 +29,8 @@
 		       with-editor
 		       dash
 		       async
-		       yasnippet))
-
+		       yasnippet)
+  "Packages to be installed at launch")
 
 (unless package-archive-contents
   (package-refresh-contents))

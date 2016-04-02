@@ -111,8 +111,6 @@
 	    (dired-omit-mode 1)
 	    ))
 
-(setq python-shell-completion-native-enable nil)
-
 ;; --------------------
 (setq visible-bell t)
 ;; --------------------
@@ -268,20 +266,19 @@ programming."
   user-init-file ".d/init/emacs_general_config.el")))
 (global-set-key (kbd "C-x e") 'open-user-init-file)
 
-;; Open emacs24.3 HOME [emacsredux.com]
-(defun open-emacs-home ()
-  "Open emacs HOME."
+;; Open Emacs HOME [emacsredux.com]
+(defun open-emacs-init ()
+  "Open Emacs init file."
   (interactive)
   (find-file-other-window (substring
-  user-init-file 0 -6)))
-(global-set-key (kbd "C-c h") 'open-emacs-home)
+			   user-init-file)))
+(global-set-key (kbd "C-c h") 'open-emacs-init)
 
 ;;; edit root file [emacsredux.com]
-
-;;(defadvice find-file (after find-file-sudo activate)
+;; (defadvice find-file (after find-file-sudo activate)
 ;;  "Visit file as root."
 ;;  (unless (and buffer-file-name
-;;	       (file-writable-p buffer-file-name))
+;; 	       (file-writable-p buffer-file-name))
 ;;    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
 (defun sudo-edit (&optional arg)

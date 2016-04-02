@@ -8,6 +8,7 @@
 
    - Update submodules
      #+BEGIN_SRC sh
+       cd ~/.emacs.d
        git submodule init
        git submodule update
      #+END_SRC

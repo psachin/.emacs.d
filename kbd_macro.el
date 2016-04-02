@@ -27,12 +27,6 @@
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 
-;; cycle emacs-buffer
-;; (global-set-key [(f9)]        'cycle-buffer-backward)
-;; (global-set-key [(f10)]       'cycle-buffer)
-;; (global-set-key [(shift f9)]  'cycle-buffer-backward-permissive)
-;; (global-set-key [(shift f10)] 'cycle-buffer-permissive)
-
 ;; keybinding for Org-mode
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)

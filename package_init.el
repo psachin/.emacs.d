@@ -5,6 +5,9 @@
 (autopair-global-mode t)
 (run-python)
 
+(add-to-list 'python-shell-completion-native-disabled-interpreters
+	     "python")
+
 ;; Completion words longer than 4 characters
 (custom-set-variables
  '(ac-ispell-requires 4)
@@ -34,16 +37,12 @@
     "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
     "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 
-
 ;; hidepw
 (add-to-list 'load-path "~/.emacs.d/extensions/hidepw/")
 (require 'hidepw)
 
 (add-to-list 'auto-mode-alist
 	     '("\\.gpg\\'" . (lambda () (hidepw-mode))))
-
-;; Ruby--not working
-(add-hook 'ruby-mode-hook 'robe-mode)
 
 ;; insert-shebang
 (add-hook 'find-file-hook 'insert-shebang)
