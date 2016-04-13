@@ -24,9 +24,6 @@
 (add-to-list 'auto-mode-alist
 	     '("\\.gpg\\'" . (lambda () (hidepw-mode))))
 
-;; insert-shebang
-(add-hook 'find-file-hook 'insert-shebang)
-
 ;; ---------- LaTeX ----------
 (require 'ox-latex)
 (add-to-list 'org-latex-classes
