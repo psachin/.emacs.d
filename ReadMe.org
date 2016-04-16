@@ -14,7 +14,16 @@
      #+END_SRC
 
    - Edit =;; Personal info= section in file =general_config.el=
+   - Optionally, run =make= to byte-compile config files.
    - Start Emacs
+
+** Contribute
+   - Feel free to send PRs
+   - Create new issues
+   - Make sure to run tests before sending a PR
+     #+BEGIN_SRC shell
+       make test
+     #+END_SRC
 
 ** Gnus
    - Optionally you can edit parameter in =gnus.el= and copy the file as =~/.gnus.el=

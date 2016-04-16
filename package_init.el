@@ -1,5 +1,13 @@
 ;; load package init
 
+;; To avoid make error
+;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Declaring-Functions.html
+(declare-function global-company-mode "company.el")
+(declare-function global-auto-complete-mode "auto-complete.el")
+(declare-function autopair-global-mode "autopair.el")
+(declare-function ac-ispell-setup "ac-ispell.el")
+(declare-function yas-global-mode "yasnippet.el")
+
 (global-company-mode t)
 (global-auto-complete-mode t)
 (autopair-global-mode t)
