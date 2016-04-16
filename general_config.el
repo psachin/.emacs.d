@@ -37,7 +37,7 @@
 
 ;; show matching parenthesis
 (show-paren-mode t)
-(setq show-paren-style 'parenthesis) ; highlight just brackets
+(setq-default show-paren-style 'parenthesis) ; highlight just brackets
 ;; (setq show-paren-style 'expression) ; highlight entire bracket expression
 
 ;; hide tool-bar and menubar
@@ -152,8 +152,8 @@
 	     '("\\.h\\'" . c++-mode))
 
 ;; Enable Allman Style of indentation for C code. OpenSource for you, Jan 2014.
-(setq c-default-style "linux"
-      c-basic-offset 4)
+(setq-default c-default-style "linux"
+	      c-basic-offset 4)
 
 ;; Save all backup files in pne space
 (setq backup-directory-alist '(("." . "/home/sachin/.emacs-saves")))
@@ -238,15 +238,16 @@
 (global-set-key (kbd "C-x p") 'goto-percent)
 
 ;; Add workflow state in org-mode
-(setq org-todo-keywords
-  '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE")))
+(setq-default org-todo-keywords
+	      '((sequence "TODO" "FIXME" "IN-PROGRESS" "WAITING" "DONE")))
 
 ;; This will create a date-time stamp for tasks marked as 'DONE'.
-(setq org-log-done t)
+(setq-default org-log-done t)
 
 ;; My org-agenda
-(setq org-agenda-files (let (list)
-			 (add-to-list 'list "/home/sachin/org/")))
+;; FIXME: User directory should not be hard-coded
+(setq-default org-agenda-files (let (list)
+				 (add-to-list 'list "/home/psachin/org/")))
 
 ;; Highlight Comment Annotations
 (defun font-lock-comment-annotations ()
@@ -271,7 +272,7 @@ programming."
   "Open Emacs init file."
   (interactive)
   (find-file-other-window (substring
-			   user-init-file)))
+			   user-init-file nil)))
 (global-set-key (kbd "C-c h") 'open-emacs-init)
 
 ;;; edit root file [emacsredux.com]
@@ -330,11 +331,11 @@ buffer is not visiting a file."
 ;; 	))
 
 ;; Source: http://blog.paphus.com/blog/2012/08/01/introducing-octopress-blogging-for-org-mode/
-(defun save-then-publish ()
-  (interactive)
-  (save-buffer)
-  (org-save-all-org-buffers)
-  (org-publish-current-project))
+;; (defun save-then-publish ()
+;;   (interactive)
+;;   (save-buffer)
+;;   (org-save-all-org-buffers)
+;;   (org-publish-current-project))
 
 ;; (add-to-list 'load-path "/home/sachin/github/orgmode-octopress/")
 ;; (require 'org-octopress)
@@ -357,9 +358,9 @@ a query prompt otherwise."
 
 (defun sort-buffers ()
   "Put the buffer list in alphabetical order."
-  (interactive)
+  (called-interactively-p 'interactive)
   (dolist (buff (buffer-list-sorted)) (bury-buffer buff))
-  (when (interactive-p) (list-buffers)))
+  (when (called-interactively-p 'any) (list-buffers)))
 ;;(global-set-key "\M-b"    'sort-buffers)
 
 (defun buffer-list-sorted ()
@@ -395,7 +396,7 @@ Enter custom-name or RET to save image with timestamp"
 (defun surround(tag)
   "Surround word within TAG.
   TAG can be <>," ",' ',[ ], etc."
-  (interactive "sWord should be inside: ")
+  (called-interactively-p "sWord should be inside: ")
   (backward-word)
   (mark-word)
   (when (region-active-p)

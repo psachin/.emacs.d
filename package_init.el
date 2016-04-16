@@ -15,11 +15,10 @@
      (ac-ispell-setup)))
 
 (yas-global-mode t)
-(setq yas-snippet-dirs "~/.emacs.d/snippets/")
+(setq-default yas-snippet-dirs "~/.emacs.d/snippets/")
 
 ;; hidepw
 (add-to-list 'load-path "~/.emacs.d/extensions/hidepw/")
-(require 'hidepw)
 
 (add-to-list 'auto-mode-alist
 	     '("\\.gpg\\'" . (lambda () (hidepw-mode))))
@@ -33,18 +32,17 @@
                ("\\subsection\{%s\}" . "\\subsection*\{%s\}")
                ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}")))
 
-
 (setq org-latex-listings 'minted)
 
-(setq org-export-latex-custom-lang-environments
-      '(
-        (emacs-lisp "common-lispcode")
-        ))
+(setq-default org-export-latex-custom-lang-environments
+	      '(
+		(emacs-lisp "common-lispcode")
+		))
 
-(setq org-export-latex-minted-options
-      '(("frame" "lines")
-        ("fontsize" "\\scriptsize")
-        ("linenos" "")))
+(setq-default org-export-latex-minted-options
+	      '(("frame" "lines")
+		("fontsize" "\\scriptsize")
+		("linenos" "")))
 
 (setq org-latex-pdf-process
   '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
