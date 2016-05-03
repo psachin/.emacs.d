@@ -11,7 +11,7 @@
 
 (ert-deftest emacsd-install-file-exists-test ()
   "Check if install.el exists"
-  (should (equal (file-exists-p "../install.el") t)))
+  (should (equal (file-exists-p "../install-packages.el") t)))
 
 (ert-deftest emacsd-defalias-file-exists-test ()
   "Check if defalias.el exists"

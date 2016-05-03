@@ -58,6 +58,6 @@ test : build test-dep-1 test-autoloads
 	done)
 
 clean :
-	@rm -f $(AUTOLOADS_FILE) *.elc *~ */*.elc */*~
+	@rm -f $(AUTOLOADS_FILE) *.elc *~ */*.elc */*~ .*~
 	@rm -f \#*\#
 
