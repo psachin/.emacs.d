@@ -3,6 +3,7 @@
 (setq debug-on-error t)
 
 ;; Personal info
+;; FIXME: Should prompt for user details.
 (setq user-full-name "Sachin"
       user-mail-address "psachin@redhat.com")
 
