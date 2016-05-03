@@ -12,21 +12,6 @@
 (unless (server-running-p)
   (server-start))
 
-;;; --------------------
-;;; package conf
-
-;; add marmalade repo
-(require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
-
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
-
-
-(package-initialize)
-;; --------------------
-
 
 ;; Turn off mouse interface early in startup to avoid momentary display
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
