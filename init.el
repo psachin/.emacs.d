@@ -8,7 +8,7 @@
 (package-initialize nil)
 
 (load-file "~/.emacs.d/general_config.el")
-(load-file "~/.emacs.d/install.el")
+(load-file "~/.emacs.d/install-packages.el")
 (load-file "~/.emacs.d/defalias.el")
 (load-file "~/.emacs.d/kbd_macro.el")
 (load-file "~/.emacs.d/package_init.el")

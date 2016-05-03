@@ -1,10 +1,18 @@
 ;; Execute this file to setup new environment.
 
-;; Below snippet will collect installed package list in a file -- packages.txt
-;; (with-temp-file "packages.txt" (insert (format "%S" package-activated-list)))
+;; add marmalade repo
+(require 'package)
 
-;; Below snippet will store installed package list in a variable -- package-list
-;; (setq package-list package-activated-list)
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+	     '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+
+(package-initialize)
+;; --------------------
+
+(when (not package-archive-contents)
+  (package-refresh-contents))
 
 ;; My packages(add your packages here)
 (defvar package-list '(ac-ispell
@@ -30,9 +38,6 @@
 		       async
 		       yasnippet)
   "Packages to be installed at launch")
-
-(unless package-archive-contents
-  (package-refresh-contents))
 
 ;; Install the missing packages
 (dolist (package package-list)
