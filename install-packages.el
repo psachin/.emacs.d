@@ -37,8 +37,7 @@
 		       async
 		       yasnippet
 		       elpy
-		       iedit
-		       bbdb)
+		       iedit)
   "Packages to be installed at launch")
 
 ;; Install the missing packages
