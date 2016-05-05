@@ -1,12 +1,5 @@
 ;; load other configs
 
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize nil)
-
 (load-file "~/.emacs.d/general_config.el")
 (load-file "~/.emacs.d/install-packages.el")
 (load-file "~/.emacs.d/defalias.el")
@@ -37,7 +30,7 @@
      (ruby "ruby"))))
  '(package-selected-packages
    (quote
-    (git-timemachine find-file-in-project robe markdown-mode jedi yasnippet ac-ispell insert-shebang magit company autopair)))
+    (bbdb iedit elpy git-timemachine find-file-in-project robe markdown-mode jedi yasnippet ac-ispell insert-shebang magit company autopair)))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t))
 (custom-set-faces

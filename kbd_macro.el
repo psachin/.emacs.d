@@ -52,4 +52,7 @@
 ;; Hide DOT files
 (global-set-key (kbd "M-o") 'dired-omit-mode)
 
+;; Enable iedit-mode
+(global-set-key (kbd "C-c i") 'iedit-mode)
+
 (provide 'kbd_macro)

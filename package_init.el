@@ -56,6 +56,8 @@
   '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
     "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
     "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
-;; --------------------
+
+;; Do not highlight indentation, specially during elpy-mode
+(setq-default highlight-indentation-mode nil)
 
 (provide 'package_init)

@@ -36,7 +36,10 @@
 		       with-editor
 		       dash
 		       async
-		       yasnippet)
+		       yasnippet
+		       elpy
+		       iedit
+		       bbdb)
   "Packages to be installed at launch")
 
 ;; Install the missing packages
