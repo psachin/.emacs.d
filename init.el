@@ -1,4 +1,4 @@
-;; load other configs
+(package-initialize)
 
 (load-file "~/.emacs.d/general_config.el")
 (load-file "~/.emacs.d/install-packages.el")
@@ -30,7 +30,7 @@
      (ruby "ruby"))))
  '(package-selected-packages
    (quote
-    (bbdb iedit elpy git-timemachine find-file-in-project robe markdown-mode jedi yasnippet ac-ispell insert-shebang magit company autopair)))
+    (iedit elpy git-timemachine find-file-in-project robe markdown-mode jedi yasnippet ac-ispell insert-shebang magit company autopair)))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t))
 (custom-set-faces

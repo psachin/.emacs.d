@@ -1,6 +1,5 @@
 ;; Execute this file to setup new environment.
 
-;; add marmalade repo
 (require 'package)
 
 (add-to-list 'package-archives
