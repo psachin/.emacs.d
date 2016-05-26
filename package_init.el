@@ -27,7 +27,7 @@
 
 ;; hidepw
 (add-to-list 'load-path "~/.emacs.d/extensions/hidepw/")
-(require 'hidepw)
+(ignore-errors (require 'hidepw))
 (add-to-list 'auto-mode-alist
 	     '("\\.gpg\\'" . (lambda () (hidepw-mode))))
 

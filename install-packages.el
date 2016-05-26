@@ -37,7 +37,8 @@
 		       async
 		       yasnippet
 		       elpy
-		       iedit)
+		       iedit
+		       yaml-mode)
   "Packages to be installed at launch")
 
 ;; Install the missing packages
