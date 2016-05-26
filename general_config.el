@@ -28,7 +28,7 @@
 
 ;; hide tool-bar and menubar
 (menu-bar-mode 0)
-(tool-bar-mode 0)
+(ignore-errors (tool-bar-mode 0))
 
 ;; show elisp function docs in result bar
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
