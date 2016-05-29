@@ -1,4 +1,4 @@
-* .emacs.d
+* Emacs configuration
 
 ** Usage
    - Clone this repo(Warning: Backup your =~/.emacs.d/=)
@@ -14,16 +14,188 @@
      #+END_SRC
 
    - Edit =;; Personal info= section in file =general_config.el=
-   - Optionally, run =make= to byte-compile config files.
+   - Optionally, run =make= to byte-compile config files. =make= won't
+     work with /config.org/ branch.
    - Start Emacs
 
 ** Contribute
    - Feel free to send PRs
    - Create new issues
-   - Make sure to run tests before sending a PR
+   - Make sure to run tests before sending a PR. =make test= won't
+     work with /config.org/ branch.
      #+BEGIN_SRC shell
        make test
      #+END_SRC
 
 ** Gnus
    - Optionally you can edit parameter in =gnus.el= and copy the file as =~/.gnus.el=
+
+** Minimal config
+   #+BEGIN_SRC emacs-lisp
+   ;; Load my details
+   (setq user-full-name "Sachin"
+	 user-mail-address "psachin@redhat.com")
+   #+END_SRC
+
+   Do not mess up =init.el=
+   #+BEGIN_SRC emacs-lisp
+   ;; Me: Emacs..
+   ;; Emacs: Yes Master?
+   ;; Me: Put your customization inside custom.el. I don't want init.el to be messed up by you.
+   ;; Emacs: As you wish Master.
+   (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+   (when (file-exists-p custom-file)
+     (load custom-file))
+   #+END_SRC
+
+   Turn of all decorations
+   #+BEGIN_SRC emacs-lisp
+     ;; Turn off windows decoration
+     (when window-system
+       (tool-bar-mode 0)
+       (menu-bar-mode 0)
+       (scroll-all-mode 0)
+       (tooltip-mode 0))
+   #+END_SRC
+
+   Turn on the theme
+   #+BEGIN_SRC emacs-lisp
+     ;; Load in-built dark theme
+     (load-theme 'tango-dark)
+   #+END_SRC
+
+   I want you to greet me Emacs
+   #+BEGIN_SRC emacs-lisp
+     ;; Greeting from Emacs
+     (setq-default inhibit-startup-screen t
+                   initial-scratch-message ";; Welcome Master
+
+     "
+                   inhibit-splash-screen t)
+   #+END_SRC
+
+** General configuration
+   - Set visible bell
+     #+BEGIN_SRC emacs-lisp
+       ;; Set visible bell
+       (setq visible-bell t)
+     #+END_SRC
+
+   - Show matching parenthesis
+     #+BEGIN_SRC emacs-lisp
+       ;; Show matching parenthesis
+       (show-paren-mode t)
+       (setq-default show-paren-style 'parenthesis) ; highlight just brackets
+       ;; (setq show-paren-style 'expression) ; highlight entire bracket expression
+     #+END_SRC
+
+   - Elisp function docs
+     #+BEGIN_SRC emacs-lisp
+       ;; Show elisp function docs in result bar
+       (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+       (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
+       (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
+     #+END_SRC
+
+   - Minor mode tweaks
+     #+BEGIN_SRC emacs-lisp
+       ;;; Minor mode tweaks
+       ;; Enable column-number mode
+       (column-number-mode t)
+
+       (ignore-errors (display-battery-mode t))
+       (display-time-mode t)
+       (size-indication-mode t)
+
+       ;; Show funtion name in a mode line
+       (which-function-mode t)
+     #+END_SRC
+
+   - Editing
+     #+BEGIN_SRC emacs-lisp
+       ;;; Editing
+       ;; Delete selected text while typing
+       (delete-selection-mode 1)
+
+       ;; Turn on word wrap
+       (add-hook 'text-mode-hook '(lambda ()
+                                    (auto-fill-mode t)))
+
+       ;; Enable pretty syntax highlighting everywhere
+       (global-font-lock-mode t)
+
+       ;; Wrap lines automatically
+       (auto-fill-mode t)
+
+       ;; Indicate empty line
+       (setq-default indicate-empty-lines t)
+       (setq-default show-trailing-whitespace t)
+
+       ;; Expand some words and auto-correct
+       (setq save-abbrevs 'silently)
+       (setq-default abbrev-mode t)
+     #+END_SRC
+
+   - Dired
+     #+BEGIN_SRC emacs-lisp
+       ;;; Dired
+       ;; Hide DOT files with M-o
+       (require 'dired-x)
+       (setq dired-omit-files "^\\...+$")
+
+       (add-hook 'dired-mode-hook
+                 (lambda ()
+                   ;; Set dired-x buffer-local variables here.  For example:
+                   (dired-omit-mode 1)
+                   ))
+     #+END_SRC
+
+
+   - File
+     #+BEGIN_SRC emacs-lisp
+       ;;; File
+       ;; File encoding
+       (prefer-coding-system 'utf-8)
+       (setq-default buffer-file-coding-system 'utf-8-auto-unix)
+     #+END_SRC
+
+   - Misc
+     #+BEGIN_SRC emacs-lisp
+       ;;; Misc
+       ;; Save history
+       (savehist-mode 1)
+
+       ;; Lazy prompting. Change "yes or no" to "y or n"
+       ;; http://dl.dropboxusercontent.com/u/3968124/sacha-emacs.html
+       (fset 'yes-or-no-p 'y-or-n-p)
+
+       ;; Make TAB key always call a indent command
+       (setq-default tab-always-indent t)
+
+
+       ;; Make TAB key do indent first and then completion
+       (setq-default tab-always-indent 'complete)
+
+       ;; Fill a line with space after a period
+       (setq sentence-end-double-space nil)
+     #+END_SRC
+
+   - Start Emacs server
+     #+BEGIN_SRC emacs-lisp
+       ;; Start Emacs server
+       (require 'server)
+       (unless (server-running-p)
+         (server-start))
+     #+END_SRC
+
+** [[./packages.org][Packages]]
+   #+BEGIN_SRC emacs-lisp
+     ;;; Load packages.el
+     (org-babel-load-file (concat user-emacs-directory "packages.org"))
+   #+END_SRC
+
+** [[./keyboard.org][Keyboard config]]
+   #+BEGIN_SRC emacs-lisp
+     ;;; Load keyboard.el
+     (org-babel-load-file (concat user-emacs-directory "keyboard.org"))
+   #+END_SRC
