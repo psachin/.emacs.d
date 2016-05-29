@@ -55,6 +55,7 @@
        (tool-bar-mode 0)
        (menu-bar-mode 0)
        (scroll-all-mode 0)
+       (scroll-bar-mode 0)
        (tooltip-mode 0))
    #+END_SRC
 
@@ -148,6 +149,10 @@
                    ;; Set dired-x buffer-local variables here.  For example:
                    (dired-omit-mode 1)
                    ))
+
+       ;; Auto complete with ignore case
+       (setq-default read-buffer-completion-ignore-case t)
+       (setq-default read-file-name-completion-ignore-case t)
      #+END_SRC
 
 
