@@ -60,9 +60,8 @@
    - [[https://github.com/jekor/hidepw][hidepw]]: Emacs minor mode for hiding passwords (anti-shoulder-surfing)
      #+BEGIN_SRC emacs-lisp
        ;; hidepw
-       (add-to-list 'load-path "~/.emacs.d/extensions/hidepw/")
+       (add-to-list 'load-path (concat user-emacs-directory "extensions/hidepw/"))
        (ignore-errors (require 'hidepw))
        (add-to-list 'auto-mode-alist
                     '("\\.gpg\\'" . (lambda () (hidepw-mode))))
-
      #+END_SRC
