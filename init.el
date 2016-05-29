@@ -30,20 +30,7 @@
      (ruby "ruby"))))
  '(package-selected-packages
    (quote
-    (yaml-mode
-     iedit
-     elpy
-     git-timemachine
-     find-file-in-project
-     robe
-     markdown-mode
-     jedi
-     yasnippet
-     ac-ispell
-     insert-shebang
-     magit
-     company
-     autopair)))
+    (yaml-mode iedit elpy git-timemachine find-file-in-project robe markdown-mode jedi yasnippet ac-ispell insert-shebang magit company autopair)))
  '(read-buffer-completion-ignore-case t)
  '(read-file-name-completion-ignore-case t))
 (custom-set-faces

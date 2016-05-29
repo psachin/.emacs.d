@@ -38,7 +38,8 @@
 		       yasnippet
 		       elpy
 		       iedit
-		       yaml-mode)
+		       yaml-mode
+		       undo-tree)
   "Packages to be installed at launch")
 
 ;; Install the missing packages

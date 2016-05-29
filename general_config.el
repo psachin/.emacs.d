@@ -19,7 +19,11 @@
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 ;; 10 mins emacs for clojure
-(setq-default inhibit-startup-screen t)
+(setq-default inhibit-startup-screen t
+	      initial-scratch-message ";; Welcome Master
+
+"
+	      inhibit-splash-screen t)
 
 ;; show matching parenthesis
 (show-paren-mode t)
@@ -27,8 +31,11 @@
 ;; (setq show-paren-style 'expression) ; highlight entire bracket expression
 
 ;; hide tool-bar and menubar
-(menu-bar-mode 0)
-(ignore-errors (tool-bar-mode 0))
+(when window-system
+  (tool-bar-mode 0)
+  (menu-bar-mode 0)
+  (scroll-all-mode 0)
+  (tooltip-mode 0))
 
 ;; show elisp function docs in result bar
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
@@ -74,7 +81,7 @@
 (setq-default indicate-empty-lines t)
 (setq-default show-trailing-whitespace t)
 
-;; Change "yes or no" to "y or n"
+;; Lazy prompting. Change "yes or no" to "y or n"
 ;; http://dl.dropboxusercontent.com/u/3968124/sacha-emacs.html
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -101,6 +108,13 @@
 (setq visible-bell t)
 ;; --------------------
 
+;; File encoding
+(prefer-coding-system 'utf-8)
+(setq-default buffer-file-coding-system 'utf-8-auto-unix)
+
+;; Expand some words and auto-correct
+(setq save-abbrevs 'silently)
+(setq-default abbrev-mode t)
 
 ;; extending support for other languages so that we can execute them
 ;; in org mode
