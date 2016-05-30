@@ -193,6 +193,12 @@
          (server-start))
      #+END_SRC
 
+** [[./alias.org][Alias]]
+   #+BEGIN_SRC emacs-lisp
+     ;;; Load aliases.el
+     (org-babel-load-file (concat user-emacs-directory "alias.org"))
+   #+END_SRC
+
 ** [[./packages.org][Packages]]
    #+BEGIN_SRC emacs-lisp
      ;;; Load packages.el

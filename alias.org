@@ -1,0 +1,46 @@
+* Aliases
+  Provides default aliases
+  - String
+    #+BEGIN_SRC emacs-lisp
+      ;;; Default aliases
+      ;; Replace string
+      (defalias 'rs 'replace-string)
+
+      ;; For easier access to regex search/replace.
+      (defalias 'qrr 'query-replace-regexp)
+    #+END_SRC
+
+  - Magit
+    #+BEGIN_SRC emacs-lisp
+      ;;; Magit
+      (defalias 'ms 'magit-status)
+      (defalias 'log 'magit-log)
+    #+END_SRC
+
+  - Region
+    #+BEGIN_SRC emacs-lisp
+      ;;; Evaluate region
+      (defalias 'er 'eval-region)
+
+      ;;; Comment/Uncomment region
+      (defalias 'cor 'comment-region)
+      (defalias 'ur 'uncomment-region)
+    #+END_SRC
+
+  - Buffer
+    #+BEGIN_SRC emacs-lisp
+      ;;; Evaluate buffer
+      (defalias 'eb 'eval-buffer)
+    #+END_SRC
+
+  - File
+    #+BEGIN_SRC emacs-lisp
+      ;;; Load file
+      (defalias 'lf 'load-file)
+    #+END_SRC
+
+  - Package
+    #+BEGIN_SRC emacs-lisp
+      ;;; Customize package group
+      (defalias 'cg 'customize-group)
+    #+END_SRC
