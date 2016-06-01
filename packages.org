@@ -91,17 +91,33 @@
      #+END_SRC
 
    - Python Jedi
+     From emacs-jedi readme
+     Type:
+          =M-x jedi:install-server RET=
+     Then open Python file.
      #+BEGIN_SRC emacs-lisp
+       ;;; Python Jedi
+       ;;; From emacs-jedi readme
+       ;; Type:
+       ;;     M-x jedi:install-server RET
+       ;; Then open Python file.
        (use-package jedi
-         :ensure t)
+         :ensure t
+         :defer 3
+         :config
+         ;; Standard Jedi.el setting
+         (add-hook 'python-mode-hook 'jedi:setup)
+         (setq jedi:complete-on-dot t))
      #+END_SRC
 
    - Elpy
      #+BEGIN_SRC emacs-lisp
+       ;;; Elpy
        (use-package elpy
          :ensure t
          :diminish elpy-mode
          :config
+         ;; (elpy-enable)
          ;; Do not highlight indentation, specially during elpy-mode
          (setq-default highlight-indentation-mode nil))
      #+END_SRC
