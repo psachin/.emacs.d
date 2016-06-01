@@ -5,56 +5,106 @@
      #+BEGIN_SRC emacs-lisp
        ;; Yasnippet
        (use-package yasnippet
-         :ensure t
-         :diminish yas-minor-mode
-         :config
-         (setq yas-snippet-dirs (concat user-emacs-directory "snippets"))
-         (yas-global-mode))
+	 :ensure t
+	 :diminish yas-minor-mode
+	 :config
+	 (setq yas-snippet-dirs (concat user-emacs-directory "snippets"))
+	 (yas-global-mode))
      #+END_SRC
 
    - insert-shebang
      #+BEGIN_SRC emacs-lisp
        ;; insert-shebang
        (use-package insert-shebang
-         :ensure t
-         :config
-         '(insert-shebang-file-types
-           (quote
-           (("py" . "python")
-            ("sh" . "bash")
-            ("pl" . "perl")
-            ("rb" . "ruby")))))
+	 :ensure t
+	 :config
+	 '(insert-shebang-file-types
+	   (quote
+	   (("py" . "python")
+	    ("sh" . "bash")
+	    ("pl" . "perl")
+	    ("rb" . "ruby")))))
      #+END_SRC
 
    - autopair
      #+BEGIN_SRC emacs-lisp
        ;;; autopair
        (use-package autopair
-         :ensure t
-         :defer 2                              ; 2 seconds of delay
-         :diminish autopair-minor-mode
-         :config
-         (autopair-global-mode t))
+	 :ensure t
+	 :defer 2                              ; 2 seconds of delay
+	 :diminish autopair-minor-mode
+	 :config
+	 (autopair-global-mode t))
      #+END_SRC
 
    - Magit
      #+BEGIN_SRC emacs-lisp
        ;;; Magit
        (use-package magit
-         :ensure t
-         :defer 2
-         :diminish magit-minor-mode)
+	 :ensure t
+	 :defer 2
+	 :diminish magit-minor-mode)
      #+END_SRC
 
    - Git time-machine
      #+BEGIN_SRC emacs-lisp
        ;;; Git Time Machine
        (use-package git-timemachine
-         :ensure t
-         :defer 5
-         :diminish git-timemachine-minor-mode)
+	 :ensure t
+	 :defer 5
+	 :diminish git-timemachine-minor-mode)
      #+END_SRC
 
+   - Company mode
+     #+BEGIN_SRC emacs-lisp
+       ;;; Company mode
+       (use-package company
+	 :ensure t
+	 :config
+	 (add-hook 'after-init-hook 'global-company-mode))
+     #+END_SRC
+
+   - Auto Complete
+     #+BEGIN_SRC emacs-lisp
+       ;;; auto-complete
+       (use-package auto-complete
+         :ensure t
+         :diminish auto-complete-mode
+         :config
+         (global-auto-complete-mode t))
+     #+END_SRC
+
+   - Auto complete ispell
+     #+BEGIN_SRC emacs-lisp
+       ;;; ac-ispell
+       (use-package ac-ispell
+         :ensure t
+         :diminish ac-ispell-mode
+         :config
+         (custom-set-variables
+          '(ac-ispell-requires 4)
+          '(ac-ispell-fuzzy-limit 4))
+
+         (eval-after-load "auto-complete"
+           '(progn
+              (ac-ispell-setup))))
+     #+END_SRC
+
+   - Python Jedi
+     #+BEGIN_SRC emacs-lisp
+       (use-package jedi
+         :ensure t)
+     #+END_SRC
+
+   - Elpy
+     #+BEGIN_SRC emacs-lisp
+       (use-package elpy
+         :ensure t
+         :diminish elpy-mode
+         :config
+         ;; Do not highlight indentation, specially during elpy-mode
+         (setq-default highlight-indentation-mode nil))
+     #+END_SRC
 
 ** Manual
    - [[https://github.com/jekor/hidepw][hidepw]]: Emacs minor mode for hiding passwords (anti-shoulder-surfing)

@@ -177,7 +177,6 @@
        ;; Make TAB key always call a indent command
        (setq-default tab-always-indent t)
 
-
        ;; Make TAB key do indent first and then completion
        (setq-default tab-always-indent 'complete)
 
@@ -192,6 +191,13 @@
        (unless (server-running-p)
          (server-start))
      #+END_SRC
+
+** [[./latex.org][LaTeX]]
+   I want to have special section for LaTeX
+   #+BEGIN_SRC emacs-lisp
+     ;;; Load latex.el
+     (org-babel-load-file (concat user-emacs-directory "latex.org"))
+   #+END_SRC
 
 ** [[./alias.org][Alias]]
    #+BEGIN_SRC emacs-lisp

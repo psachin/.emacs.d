@@ -1,0 +1,47 @@
+* LaTeX configuration
+
+** Basic LaTeX class
+   - Add LaTeX beamer sections/subsections
+     #+BEGIN_SRC emacs-lisp
+       ;;; Add LaTeX beamer sections/subsections
+       (require 'ox-latex)
+       (add-to-list 'org-latex-classes
+                    '("beamer"
+                      "\\documentclass\[presentation\]\{beamer\}"
+                      ("\\section\{%s\}" . "\\section*\{%s\}")
+                      ("\\subsection\{%s\}" . "\\subsection*\{%s\}")
+                      ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}")))
+     #+END_SRC
+
+   - Minted
+     #+BEGIN_SRC emacs-lisp
+       ;;; Minted
+       (setq org-latex-listings 'minted)
+
+       ;;; Minted options
+       (setq-default org-export-latex-minted-options
+                     '(("frame" "lines")
+                       ("fontsize" "\\scriptsize")
+                       ("linenos" "")))
+     #+END_SRC
+
+   - Custom language environment. I'm not sure if this is needed
+     #+BEGIN_SRC emacs-lisp
+       ;;; Custom language environment. I'm not sure if this is needed
+       (setq-default org-export-latex-custom-lang-environments
+                     '((emacs-lisp "common-lispcode")
+                       (cc "c++")
+                       (cperl "perl")
+                       (shell-script "bash")
+                       (caml "ocaml")
+                       (ruby "ruby")))
+     #+END_SRC
+
+   - Run shell process
+     #+BEGIN_SRC emacs-lisp
+       ;;; Run shell process when 'M-x org-beamer-export-to-pdf' is called.
+       (setq org-latex-pdf-process
+             '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+               "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+               "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+     #+END_SRC
