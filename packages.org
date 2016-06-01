@@ -91,9 +91,13 @@
      #+END_SRC
 
    - Python Jedi
+
      From emacs-jedi readme
+
      Type:
+
           =M-x jedi:install-server RET=
+
      Then open Python file.
      #+BEGIN_SRC emacs-lisp
        ;;; Python Jedi

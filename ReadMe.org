@@ -13,7 +13,6 @@
        git submodule update
      #+END_SRC
 
-   - Edit =;; Personal info= section in file =general_config.el=
    - Optionally, run =make= to byte-compile config files. =make= won't
      work with /config.org/ branch.
    - Start Emacs
