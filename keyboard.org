@@ -1,5 +1,4 @@
 * Keyboard customizations
-  
 ** Moving around
    - Switch buffer
      #+BEGIN_SRC emacs-lisp
@@ -32,7 +31,7 @@
          ;; set <F10> key for delete all other windows except THIS
          (global-set-key (kbd "<f6>") 'delete-other-windows)
        #+END_SRC
-     
+
      - Manage window size
        #+BEGIN_SRC emacs-lisp
          ;; Manage window size
@@ -48,6 +47,8 @@
        (global-set-key (kbd "C-+") 'text-scale-increase)
        (global-set-key (kbd "C--") 'text-scale-decrease)
        (global-set-key (kbd "RET") 'newline-and-indent)
+       ;;;
+       (define-key global-map (kbd "RET") 'newline-and-indent)
      #+END_SRC
 
    - Org
@@ -79,4 +80,3 @@
        ;; Enable iedit-mode
        (global-set-key (kbd "C-c i") 'iedit-mode)
      #+END_SRC
-

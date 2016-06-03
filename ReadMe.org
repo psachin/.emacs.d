@@ -119,7 +119,7 @@
 
        ;; Turn on word wrap
        (add-hook 'text-mode-hook '(lambda ()
-                                    (auto-fill-mode t)))
+				    (auto-fill-mode t)))
 
        ;; Enable pretty syntax highlighting everywhere
        (global-font-lock-mode t)
@@ -152,8 +152,10 @@
        ;; Auto complete with ignore case
        (setq-default read-buffer-completion-ignore-case t)
        (setq-default read-file-name-completion-ignore-case t)
-     #+END_SRC
 
+       ;; Save all backup files in user space
+       (setq backup-directory-alist '((".*" . "~/.emacs.d/emacs-saves")))
+     #+END_SRC
 
    - File
      #+BEGIN_SRC emacs-lisp
@@ -161,6 +163,24 @@
        ;; File encoding
        (prefer-coding-system 'utf-8)
        (setq-default buffer-file-coding-system 'utf-8-auto-unix)
+
+       ;; limit to 80 chars
+       ;; TODO: to apply only code other than java.core
+       (require 'whitespace)
+       (setq whitespace-line-column 80) ;; limit line length
+       (setq whitespace-style '(face lines-tail))
+       (add-hook 'prog-mode-hook 'whitespace-mode)
+       (global-whitespace-mode +1)
+     #+END_SRC
+
+   - Org-mode
+     #+BEGIN_SRC emacs-lisp
+       ;; Add workflow state in org-mode
+       (setq-default org-todo-keywords
+		     '((sequence "TODO" "FIXME" "IN-PROGRESS" "WAITING" "DONE")))
+
+       ;; This will create a date-time stamp for tasks marked as 'DONE'.
+       (setq-default org-log-done t)
      #+END_SRC
 
    - Misc
@@ -181,6 +201,26 @@
 
        ;; Fill a line with space after a period
        (setq sentence-end-double-space nil)
+
+       ;; Modes for certain file extensions
+       ;; add C++ mode for .ino files(Arduino files)
+       (add-to-list 'auto-mode-alist
+                    '("\\.ino\\.pde\\'" . c++-mode)
+                    '("\\.h\\'" . c++-mode))
+
+       ;; Enable Allman Style of indentation for C code. OpenSource for you, Jan 2014.
+       (setq-default c-default-style "linux"
+                     c-basic-offset 4)
+
+
+       ;; hide DOT files with M-o
+       (require 'dired-x)
+       (setq dired-omit-files "^\\...+$")
+
+       (add-hook 'dired-mode-hook
+                 (lambda ()
+                   ;; Set dired-x buffer-local variables here.  For example:
+                   (dired-omit-mode 1)))
      #+END_SRC
 
    - Start Emacs server
@@ -188,7 +228,7 @@
        ;; Start Emacs server
        (require 'server)
        (unless (server-running-p)
-         (server-start))
+	 (server-start))
      #+END_SRC
 
 ** [[./latex.org][LaTeX]]
@@ -214,4 +254,11 @@
    #+BEGIN_SRC emacs-lisp
      ;;; Load keyboard.el
      (org-babel-load-file (concat user-emacs-directory "keyboard.org"))
+   #+END_SRC
+
+** [[./custom_functions.org][Custom Functions]]
+   All my custom functions
+   #+BEGIN_SRC emacs-lisp
+     ;;; Load custom_functions.el
+     (org-babel-load-file (concat user-emacs-directory "custom_functions.org"))
    #+END_SRC
