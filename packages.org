@@ -41,9 +41,9 @@
      #+BEGIN_SRC emacs-lisp
        ;;; Magit
        (use-package magit
-	 :ensure t
-	 :defer 2
-	 :diminish magit-minor-mode)
+         :ensure t
+         :no-require t
+         :diminish magit-minor-mode)
      #+END_SRC
 
    - Git time-machine
@@ -90,6 +90,14 @@
               (ac-ispell-setup))))
      #+END_SRC
 
+   - Python
+     #+BEGIN_SRC emacs-lisp
+       ;; Python mode
+       (use-package python
+         :mode ("\\.py\\'" . python-mode)
+         :interpreter ("python" . python-mode))
+     #+END_SRC
+
    - Python Jedi
 
      From emacs-jedi readme
@@ -130,8 +138,14 @@
    - [[https://github.com/jekor/hidepw][hidepw]]: Emacs minor mode for hiding passwords (anti-shoulder-surfing)
      #+BEGIN_SRC emacs-lisp
        ;; hidepw
-       (add-to-list 'load-path (concat user-emacs-directory "extensions/hidepw/"))
-       (ignore-errors (require 'hidepw))
-       (add-to-list 'auto-mode-alist
-                    '("\\.gpg\\'" . (lambda () (hidepw-mode))))
+       ;; Need to update submodule.
+       ;; cd ~/.emacs.d
+       ;; git submodule init
+       ;; git submodule update
+       (use-package hidepw
+         :load-path "extensions/hidepw/"
+         :config
+         (ignore-errors (require 'hidepw))
+         (add-to-list 'auto-mode-alist
+                      '("\\.gpg\\'" . (lambda () (hidepw-mode)))))
      #+END_SRC

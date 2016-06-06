@@ -1,35 +1,30 @@
 * Emacs configuration
 
 ** Usage
-   - Clone this repo(Warning: Backup your =~/.emacs.d/=)
+   - Clone this repo(Warning: Backup existing =~/.emacs.d/=)
      #+BEGIN_SRC sh
-       git clone http://github.com/psachin/.emacs.d.git ~/.emacs.d
+       git clone http://github.com/psachin/.emacs.d.git -b config.org ~/.emacs.d
      #+END_SRC
 
-   - Update submodules
+   - Update submodules. This will enable =hidepw=.
      #+BEGIN_SRC sh
        cd ~/.emacs.d
        git submodule init
        git submodule update
      #+END_SRC
 
-   - Optionally, run =make= to byte-compile config files. =make= won't
-     work with /config.org/ branch.
    - Start Emacs
 
 ** Contribute
    - Feel free to send PRs
    - Create new issues
-   - Make sure to run tests before sending a PR. =make test= won't
-     work with /config.org/ branch.
-     #+BEGIN_SRC shell
-       make test
-     #+END_SRC
 
 ** Gnus
    - Optionally you can edit parameter in =gnus.el= and copy the file as =~/.gnus.el=
 
 ** Minimal config
+
+   Change user name and Email
    #+BEGIN_SRC emacs-lisp
    ;; Load my details
    (setq user-full-name "Sachin"
@@ -64,7 +59,7 @@
      (load-theme 'tango-dark)
    #+END_SRC
 
-   I want you to greet me Emacs
+   I want you to greet me, Emacs!
    #+BEGIN_SRC emacs-lisp
      ;; Greeting from Emacs
      (setq-default inhibit-startup-screen t
@@ -86,7 +81,7 @@
        ;; Show matching parenthesis
        (show-paren-mode t)
        (setq-default show-paren-style 'parenthesis) ; highlight just brackets
-       ;; (setq show-paren-style 'expression) ; highlight entire bracket expression
+       ;; (setq show-paren-style 'expression) ; highlight bracket expression
      #+END_SRC
 
    - Elisp function docs
