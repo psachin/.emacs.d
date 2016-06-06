@@ -51,6 +51,8 @@
        (scroll-all-mode 0)
        (scroll-bar-mode 0)
        (tooltip-mode 0))
+     ;; Turn off during no-window
+     (menu-bar-mode 0)
    #+END_SRC
 
    Turn on the theme
