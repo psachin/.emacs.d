@@ -34,7 +34,8 @@
                        (cperl "perl")
                        (shell-script "bash")
                        (caml "ocaml")
-                       (ruby "ruby")))
+                       (ruby "ruby")
+                       (python "python")))
      #+END_SRC
 
    - Run shell process

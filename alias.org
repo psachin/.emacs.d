@@ -31,6 +31,9 @@
     #+BEGIN_SRC emacs-lisp
       ;;; Evaluate buffer
       (defalias 'eb 'eval-buffer)
+
+      ;; List buffers
+      (defalias 'lb 'ibuffer)
     #+END_SRC
 
   - File

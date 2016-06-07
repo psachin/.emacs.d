@@ -41,9 +41,9 @@
      #+BEGIN_SRC emacs-lisp
        ;;; Magit
        (use-package magit
-         :ensure t
-         :no-require t
-         :diminish magit-minor-mode)
+	 :ensure t
+	 :no-require t
+	 :diminish magit-minor-mode)
      #+END_SRC
 
    - Git time-machine
@@ -68,34 +68,34 @@
      #+BEGIN_SRC emacs-lisp
        ;;; auto-complete
        (use-package auto-complete
-         :ensure t
-         :diminish auto-complete-mode
-         :config
-         (global-auto-complete-mode t))
+	 :ensure t
+	 :diminish auto-complete-mode
+	 :config
+	 (global-auto-complete-mode t))
      #+END_SRC
 
    - Auto complete ispell
      #+BEGIN_SRC emacs-lisp
        ;;; ac-ispell
        (use-package ac-ispell
-         :ensure t
-         :diminish ac-ispell-mode
-         :config
-         (custom-set-variables
-          '(ac-ispell-requires 4)
-          '(ac-ispell-fuzzy-limit 4))
+	 :ensure t
+	 :diminish ac-ispell-mode
+	 :config
+	 (custom-set-variables
+	  '(ac-ispell-requires 4)
+	  '(ac-ispell-fuzzy-limit 4))
 
-         (eval-after-load "auto-complete"
-           '(progn
-              (ac-ispell-setup))))
+	 (eval-after-load "auto-complete"
+	   '(progn
+	      (ac-ispell-setup))))
      #+END_SRC
 
    - Python
      #+BEGIN_SRC emacs-lisp
        ;; Python mode
        (use-package python
-         :mode ("\\.py\\'" . python-mode)
-         :interpreter ("python" . python-mode))
+	 :mode ("\\.py\\'" . python-mode)
+	 :interpreter ("python" . python-mode))
      #+END_SRC
 
    - Python Jedi
@@ -104,7 +104,7 @@
 
      Type:
 
-          =M-x jedi:install-server RET=
+	  =M-x jedi:install-server RET=
 
      Then open Python file.
      #+BEGIN_SRC emacs-lisp
@@ -114,24 +114,31 @@
        ;;     M-x jedi:install-server RET
        ;; Then open Python file.
        (use-package jedi
-         :ensure t
-         :defer 3
-         :config
-         ;; Standard Jedi.el setting
-         (add-hook 'python-mode-hook 'jedi:setup)
-         (setq jedi:complete-on-dot t))
+	 :ensure t
+	 :defer 3
+	 :config
+	 ;; Standard Jedi.el setting
+	 (add-hook 'python-mode-hook 'jedi:setup)
+	 (setq jedi:complete-on-dot t))
      #+END_SRC
 
    - Elpy
      #+BEGIN_SRC emacs-lisp
        ;;; Elpy
        (use-package elpy
-         :ensure t
-         :diminish elpy-mode
-         :config
-         ;; (elpy-enable)
-         ;; Do not highlight indentation, specially during elpy-mode
-         (setq-default highlight-indentation-mode nil))
+	 :ensure t
+	 :diminish elpy-mode
+	 :config
+	 ;; (elpy-enable)
+	 ;; Do not highlight indentation, specially during elpy-mode
+	 (setq-default highlight-indentation-mode nil))
+     #+END_SRC
+
+   - Undo tree
+     #+BEGIN_SRC emacs-lisp
+       ;; Undo tree
+       (use-package undo-tree
+	 :ensure t)
      #+END_SRC
 
 ** Manual

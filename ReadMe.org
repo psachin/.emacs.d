@@ -112,7 +112,7 @@
      #+BEGIN_SRC emacs-lisp
        ;;; Editing
        ;; Delete selected text while typing
-       (delete-selection-mode 1)
+       (delete-selection-mode t)
 
        ;; Turn on word wrap
        (add-hook 'text-mode-hook '(lambda ()
@@ -174,10 +174,25 @@
      #+BEGIN_SRC emacs-lisp
        ;; Add workflow state in org-mode
        (setq-default org-todo-keywords
-		     '((sequence "TODO" "FIXME" "IN-PROGRESS" "WAITING" "DONE")))
+                     '((sequence "TODO" "FIXME" "IN-PROGRESS" "WAITING" "DONE")))
 
        ;; This will create a date-time stamp for tasks marked as 'DONE'.
        (setq-default org-log-done t)
+
+       ;; Org babel languages
+       (org-babel-do-load-languages
+        'org-babel-load-languages
+        '((python . t)
+          (C . t)
+          (calc . t)
+          (latex . t)
+          (java . t)
+          (ruby . t)
+          (lisp . t)
+          (scheme . t)
+          (sh . t)
+          (sqlite . t)
+          (js . t)))
      #+END_SRC
 
    - Misc
