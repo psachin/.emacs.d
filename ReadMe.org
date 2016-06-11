@@ -1,7 +1,7 @@
 * Emacs configuration
 
 ** Usage
-   - Clone this repo(Warning: Backup existing =~/.emacs.d/=)
+   - Clone this repo(/Warning/: Backup existing =~/.emacs.d/=)
      #+BEGIN_SRC sh
        git clone http://github.com/psachin/.emacs.d.git -b config.org ~/.emacs.d
      #+END_SRC
@@ -116,7 +116,10 @@
 
        ;; Turn on word wrap
        (add-hook 'text-mode-hook '(lambda ()
-				    (auto-fill-mode t)))
+                                    (auto-fill-mode t)))
+
+       ;; Enable subword for all programing modes
+       (add-hook 'prog-mode-hook 'subword-mode)
 
        ;; Enable pretty syntax highlighting everywhere
        (global-font-lock-mode t)
