@@ -94,8 +94,8 @@
      #+BEGIN_SRC emacs-lisp
        ;; Python mode
        (use-package python
-	 :mode ("\\.py\\'" . python-mode)
-	 :interpreter ("python" . python-mode))
+         :mode ("\\.py\\'" . python-mode)
+         :interpreter ("python3.4" . python-mode))
      #+END_SRC
 
    - Python Jedi
@@ -143,8 +143,8 @@
          (add-hook 'elpy-mode-hook 'flycheck-mode)
          (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
-         ;; Do not highlight indentation, specially during elpy-mode
-         (setq-default highlight-indentation-mode nil))
+         ;; Do not highlight indentation
+         (setq elpy-modules (delq 'elpy-module-highlight-indentation elpy-modules)))
      #+END_SRC
 
    - Undo tree
