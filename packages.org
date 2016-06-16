@@ -114,24 +114,37 @@
        ;;     M-x jedi:install-server RET
        ;; Then open Python file.
        (use-package jedi
-	 :ensure t
-	 :defer 3
-	 :config
-	 ;; Standard Jedi.el setting
-	 (add-hook 'python-mode-hook 'jedi:setup)
-	 (setq jedi:complete-on-dot t))
+         :ensure t
+         :disabled t
+         :defer 3
+         :config
+         ;; Standard Jedi.el setting
+         (add-hook 'python-mode-hook 'jedi:setup)
+         (setq jedi:complete-on-dot t))
+     #+END_SRC
+
+   - Flycheck
+     #+BEGIN_SRC emacs-lisp
+       ;;; Flycheck
+       (use-package flycheck
+         :ensure t)
      #+END_SRC
 
    - Elpy
      #+BEGIN_SRC emacs-lisp
        ;;; Elpy
        (use-package elpy
-	 :ensure t
-	 :diminish elpy-mode
-	 :config
-	 ;; (elpy-enable)
-	 ;; Do not highlight indentation, specially during elpy-mode
-	 (setq-default highlight-indentation-mode nil))
+         :ensure t
+         :diminish elpy-mode
+         :config
+         (elpy-enable)
+
+         ;; Enable flycheck and pep8
+         (add-hook 'elpy-mode-hook 'flycheck-mode)
+         (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+
+         ;; Do not highlight indentation, specially during elpy-mode
+         (setq-default highlight-indentation-mode nil))
      #+END_SRC
 
    - Undo tree
