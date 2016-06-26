@@ -246,7 +246,7 @@
        ;; Start Emacs server
        (require 'server)
        (unless (server-running-p)
-	 (server-start))
+         (server-start))
      #+END_SRC
 
 ** [[./latex.org][LaTeX]]
