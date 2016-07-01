@@ -127,7 +127,8 @@
      #+BEGIN_SRC emacs-lisp
        ;;; Flycheck
        (use-package flycheck
-         :ensure t)
+         :ensure t
+         :diminish flycheck-mode)
      #+END_SRC
 
    - Elpy
@@ -139,12 +140,24 @@
          :config
          (elpy-enable)
 
+         ;; Don't use flumake if flycheck is available
+         (when (require 'flycheck nil t)
+           (setq elpy-module
+                 (delq 'elpy-module-flymake elpy-modules)))
          ;; Enable flycheck and pep8
          (add-hook 'elpy-mode-hook 'flycheck-mode)
          (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
+         ;; Shamlessly cipied from
+         ;; https://github.com/ajschumacher/.emacs.d/blob/master/init.el
+         (custom-set-variables
+          '(elpy-rpc-backend "jedi")
+          '(help-at-pt-display-when-idle (quote (flymake-overlay)) nil (help-at-pt))
+          '(help-at-pt-timer-delay 0.9)
+          '(tab-width 4))
+
          ;; Do not highlight indentation
-         (setq elpy-modules (delq 'elpy-module-highlight-indentation elpy-modules)))
+         (delete 'elpy-module-highlight-indentation elpy-modules))
      #+END_SRC
 
    - Undo tree
