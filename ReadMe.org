@@ -178,6 +178,7 @@
 
    - Org-mode
      #+BEGIN_SRC emacs-lisp
+       ;; Org-mode
        ;; Add workflow state in org-mode
        (setq-default org-todo-keywords
                      '((sequence "TODO" "FIXME" "IN-PROGRESS" "WAITING" "DONE")))
@@ -188,7 +189,8 @@
        ;; Org babel languages
        (org-babel-do-load-languages
         'org-babel-load-languages
-        '((python . t)
+        '((emacs-lisp . t)
+          (python . t)
           (C . t)
           (calc . t)
           (latex . t)

@@ -67,12 +67,13 @@
 
    - Auto Complete
      #+BEGIN_SRC emacs-lisp
-       ;;; auto-complete
+       ;; auto-complete
        (use-package auto-complete
-	 :ensure t
-	 :diminish auto-complete-mode
-	 :config
-	 (global-auto-complete-mode t))
+         :ensure t
+         :diminish auto-complete-mode
+         :config
+         (ac-config-default)
+         (global-auto-complete-mode t))
      #+END_SRC
 
    - Auto complete ispell
