@@ -29,31 +29,31 @@
 
    - autopair
      #+BEGIN_SRC emacs-lisp
-       ;;; autopair
+       ;; autopair
        (use-package autopair
-	 :ensure t
-	 :defer 2                              ; 2 seconds of delay
-	 :diminish autopair-minor-mode
-	 :config
-	 (autopair-global-mode t))
+         :ensure t
+         :defer 2                              ; 2 seconds of delay
+         :diminish autopair-minor-mode
+         :config
+         (autopair-global-mode t))
      #+END_SRC
 
    - Magit
      #+BEGIN_SRC emacs-lisp
-       ;;; Magit
+       ;; Magit
        (use-package magit
-	 :ensure t
-	 :no-require t
-	 :diminish magit-minor-mode)
+         :ensure t
+         :no-require t
+         :diminish magit-minor-mode)
      #+END_SRC
 
    - Git time-machine
      #+BEGIN_SRC emacs-lisp
-       ;;; Git Time Machine
+       ;; Git Time Machine
        (use-package git-timemachine
-	 :ensure t
-	 :defer 5
-	 :diminish git-timemachine-minor-mode)
+         :ensure t
+         :defer 5
+         :diminish git-timemachine-minor-mode)
      #+END_SRC
 
    - Company mode
@@ -78,18 +78,18 @@
 
    - Auto complete ispell
      #+BEGIN_SRC emacs-lisp
-       ;;; ac-ispell
+       ;; ac-ispell
        (use-package ac-ispell
-	 :ensure t
-	 :diminish ac-ispell-mode
-	 :config
-	 (custom-set-variables
-	  '(ac-ispell-requires 4)
-	  '(ac-ispell-fuzzy-limit 4))
+         :ensure t
+         :diminish ac-ispell-mode
+         :config
+         (custom-set-variables
+          '(ac-ispell-requires 4)
+          '(ac-ispell-fuzzy-limit 4))
 
-	 (eval-after-load "auto-complete"
-	   '(progn
-	      (ac-ispell-setup))))
+         (eval-after-load "auto-complete"
+           '(progn
+              (ac-ispell-setup))))
      #+END_SRC
 
    - Python
@@ -124,24 +124,34 @@
          (setq jedi:complete-on-dot t))
      #+END_SRC
 
+   - Company Jedi
+     #+BEGIN_SRC emacs-lisp
+       ;; company-jedi
+       (use-package company-jedi
+         :ensure t
+         :config
+         (defun my/python-mode-hook ()
+           (add-to-list 'company-backends 'company-jedi))
+
+         (add-hook 'python-mode-hook 'my/python-mode-hook))
+     #+END_SRC
+
    - Flycheck
      #+BEGIN_SRC emacs-lisp
        ;;; Flycheck
        (use-package flycheck
          :ensure t
-         :diminish flycheck-mode)
+         :config
+         (global-flycheck-mode))
      #+END_SRC
 
    - Elpy
      #+BEGIN_SRC emacs-lisp
-       ;;; Elpy
+       ;; Elpy
        (use-package elpy
          :ensure t
-         :diminish elpy-mode
          :config
-         (elpy-enable)
-
-         ;; Don't use flumake if flycheck is available
+         ;; Don't use flymake if flycheck is available
          (when (require 'flycheck nil t)
            (setq elpy-module
                  (delq 'elpy-module-flymake elpy-modules)))
@@ -149,9 +159,10 @@
          (add-hook 'elpy-mode-hook 'flycheck-mode)
          (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
-         ;; Shamlessly cipied from
+         ;; Shamlessly copied from
          ;; https://github.com/ajschumacher/.emacs.d/blob/master/init.el
          (custom-set-variables
+          ;; sudo dnf install python-jedi python3-jedi -y
           '(elpy-rpc-backend "jedi")
           '(help-at-pt-display-when-idle (quote (flymake-overlay)) nil (help-at-pt))
           '(help-at-pt-timer-delay 0.9)
