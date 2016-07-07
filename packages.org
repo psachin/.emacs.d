@@ -70,10 +70,8 @@
        ;; auto-complete
        (use-package auto-complete
          :ensure t
-         :diminish auto-complete-mode
          :config
-         (ac-config-default)
-         (global-auto-complete-mode t))
+         (ac-config-default))
      #+END_SRC
 
    - Auto complete ispell
@@ -127,8 +125,11 @@
    - Company Jedi
      #+BEGIN_SRC emacs-lisp
        ;; company-jedi
+       ;; Need to install jedi server
+       ;; M-x jedi:install-server RET
        (use-package company-jedi
          :ensure t
+         :disabled t
          :config
          (defun my/python-mode-hook ()
            (add-to-list 'company-backends 'company-jedi))
@@ -138,11 +139,11 @@
 
    - Flycheck
      #+BEGIN_SRC emacs-lisp
-       ;;; Flycheck
+       ;; Flycheck
        (use-package flycheck
          :ensure t
          :config
-         (global-flycheck-mode))
+         (global-flycheck-mode t))
      #+END_SRC
 
    - Elpy
@@ -151,6 +152,7 @@
        (use-package elpy
          :ensure t
          :config
+         (elpy-enable)
          ;; Don't use flymake if flycheck is available
          (when (require 'flycheck nil t)
            (setq elpy-module
@@ -169,7 +171,12 @@
           '(tab-width 4))
 
          ;; Do not highlight indentation
-         (delete 'elpy-module-highlight-indentation elpy-modules))
+         (delete 'elpy-module-highlight-indentation elpy-modules)
+
+         ;; I use this keys for window (re)size
+         (eval-after-load "elpy"
+         '(cl-dolist (key '("C-<up>" "C-<down>" "C-<left>" "C-<right>"))
+            (define-key elpy-mode-map (kbd key) nil))))
      #+END_SRC
 
    - Undo tree
