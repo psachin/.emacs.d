@@ -159,7 +159,10 @@
                  (delq 'elpy-module-flymake elpy-modules)))
          ;; Enable flycheck and pep8
          (add-hook 'elpy-mode-hook 'flycheck-mode)
-         (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+
+         ;; Following gives problem when python code used in reveal.js
+         ;; presentation.
+         ;; (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
          ;; Shamlessly copied from
          ;; https://github.com/ajschumacher/.emacs.d/blob/master/init.el
@@ -204,6 +207,21 @@
            :config
            (add-hook 'ruby-mode-hook 'robe-mode)
            (push 'company-robe company-backends))
+       #+END_SRC
+
+   - Presentation
+	 - reveal.js
+       #+BEGIN_SRC emacs-lisp
+         ;; ox-reveal
+         (use-package ox-reveal
+           :ensure ox-reveal)
+
+         (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
+         (setq org-reveal-mathjax t)
+
+         ;; htmlize
+         (use-package htmlize
+           :ensure t)
        #+END_SRC
 
 ** Manual
