@@ -10,13 +10,6 @@
       (defalias 'qrr 'query-replace-regexp)
     #+END_SRC
 
-  - Magit
-    #+BEGIN_SRC emacs-lisp
-      ;;; Magit
-      (defalias 'ms 'magit-status)
-      (defalias 'log 'magit-log)
-    #+END_SRC
-
   - Region
     #+BEGIN_SRC emacs-lisp
       ;;; Evaluate region
