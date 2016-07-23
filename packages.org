@@ -186,7 +186,7 @@
      #+BEGIN_SRC emacs-lisp
        ;; Undo tree
        (use-package undo-tree
-	 :ensure t)
+         :ensure t)
      #+END_SRC
 
    - Ruby(on Rails)

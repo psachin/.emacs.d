@@ -167,20 +167,3 @@
             (concat "import " sframe-full-path))
            (message "Screenshot saved as %s" sframe-full-path)))
      #+END_SRC
-
-** Testing
-
-   - Surround string with tags
-     #+BEGIN_SRC emacs-lisp
-       (defun surround(tag)
-         "Surround word within TAG.
-         TAG can be <>," ",' ',[ ], etc."
-         (called-interactively-p "sWord should be inside: ")
-         (backward-word)
-         (mark-word)
-         (when (region-active-p)
-           (kill-region (region-beginning) (region-end)))
-         (insert tag)
-         (backward-char)
-         (yank))
-     #+END_SRC

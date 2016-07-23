@@ -19,7 +19,7 @@
    - Feel free to send PRs
    - Create new issues
 
-** Gnus
+** Gnus[TODO]
    - Optionally you can edit parameter in =gnus.el= and copy the file as =~/.gnus.el=
 
 ** Minimal config
@@ -72,6 +72,11 @@
    #+END_SRC
 
 ** General configuration
+   - Frame title
+	 #+BEGIN_SRC emacs-lisp
+       ;; Frame title
+       (setq frame-title-format "Emacser")
+	 #+END_SRC
    - Set visible bell
      #+BEGIN_SRC emacs-lisp
        ;; Set visible bell
@@ -281,4 +286,12 @@
    #+BEGIN_SRC emacs-lisp
      ;;; Load custom_functions.el
      (org-babel-load-file (concat user-emacs-directory "custom_functions.org"))
+   #+END_SRC
+
+** [[./beta.org][Beta]]
+   New settings/features/packages I want to test before including them
+   to my real configuration.
+   #+BEGIN_SRC emacs-lisp
+     ;;; Load beta.el
+     (org-babel-load-file (concat user-emacs-directory "beta.org"))
    #+END_SRC
