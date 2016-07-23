@@ -1,17 +1,25 @@
 * Beta testing
 ** Settings
-   - No setting to test
+   - No settings to test
 
 ** Packages
    - Enable transparency with alpha
 	 #+BEGIN_SRC emacs-lisp
        ;; alpha
-
        ;; C-> Transparency increase
        ;; C-< Transparency decrease
-
        (use-package alpha
          :ensure t)
+	 #+END_SRC
+
+   - Powerline
+	 #+BEGIN_SRC emacs-lisp
+       ;; Powerline
+       (when window-system
+         (use-package powerline
+           :ensure t
+           :config
+           (powerline-center-theme)))
 	 #+END_SRC
 
 ** Custom functions

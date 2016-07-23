@@ -210,7 +210,7 @@
        #+END_SRC
 
    - Presentation
-	 - reveal.js
+	 + reveal.js
        #+BEGIN_SRC emacs-lisp
          ;; ox-reveal
          (use-package ox-reveal

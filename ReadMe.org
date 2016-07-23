@@ -72,11 +72,13 @@
    #+END_SRC
 
 ** General configuration
+
    - Frame title
 	 #+BEGIN_SRC emacs-lisp
        ;; Frame title
        (setq frame-title-format "Emacser")
 	 #+END_SRC
+
    - Set visible bell
      #+BEGIN_SRC emacs-lisp
        ;; Set visible bell
