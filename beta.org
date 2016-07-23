@@ -17,9 +17,7 @@
        ;; Powerline
        (when window-system
          (use-package powerline
-           :ensure t
-           :config
-           (powerline-center-theme)))
+           :ensure t))
 	 #+END_SRC
 
 ** Custom functions
