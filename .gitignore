@@ -4,3 +4,13 @@ ac-comphist.dat
 elpa/
 history
 tramp
+
+# Compiled files
+ReadMe.el
+alias.el
+beta.el
+custom_functions.el
+custom.el
+keyboard.el
+latex.el
+packages.el

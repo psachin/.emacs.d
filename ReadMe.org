@@ -188,7 +188,13 @@
        ;; Org-mode
        ;; Add workflow state in org-mode
        (setq-default org-todo-keywords
-                     '((sequence "TODO" "FIXME" "IN-PROGRESS" "WAITING" "DONE")))
+                     '((sequence
+                        "TODO(t)"
+                        "FIXME(f)"
+                        "IN-PROGRESS(p)"
+                        "WAITING(w)"
+                        "DONE(d)"
+                        "CANCLED(c)")))
 
        ;; This will create a date-time stamp for tasks marked as 'DONE'.
        (setq-default org-log-done t)
