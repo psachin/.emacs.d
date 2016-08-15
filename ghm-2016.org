@@ -1,0 +1,191 @@
+#+TITLE: Tidy Emacs Config
+#+AUTHOR: Sachin
+#+DATE: 19 AUG 2016
+
+#+OPTIONS: timestamp:nil, email:nil
+#+OPTIONS: reveal_center:t reveal_control:t reveal_height:-1
+#+OPTIONS: reveal_history:nil reveal_keyboard:t reveal_overview:t
+#+OPTIONS: reveal_progress:t reveal_rolling_links:nil
+#+OPTIONS: reveal_single_file:nil reveal_slide_number:"c"
+#+OPTIONS: reveal_title_slide:auto reveal_width:-1
+#+OPTIONS: toc:nil num:nil
+#+REVEAL_MARGIN: -1
+#+REVEAL_MIN_SCALE: -1
+#+REVEAL_MAX_SCALE: -1
+#+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/3.0.0/
+#+REVEAL_TRANS: linear
+#+REVEAL_SPEED: default
+#+REVEAL_THEME: moon
+#+REVEAL_EXTRA_CSS:
+#+REVEAL_EXTRA_JS:
+#+REVEAL_HLEVEL:
+#+REVEAL_TITLE_SLIDE_BACKGROUND:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_SIZE:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_REPEAT:
+#+REVEAL_TITLE_SLIDE_BACKGROUND_TRANSITION:
+#+REVEAL_MATHJAX_URL: https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+#+REVEAL_PREAMBLE:
+#+REVEAL_HEAD_PREAMBLE:
+#+REVEAL_POSTAMBLE:
+#+REVEAL_MULTIPLEX_ID:
+#+REVEAL_MULTIPLEX_SECRET:
+#+REVEAL_MULTIPLEX_URL:
+#+REVEAL_MULTIPLEX_SOCKETIO_URL:
+#+REVEAL_SLIDE_HEADER:
+#+REVEAL_SLIDE_FOOTER:
+#+REVEAL_PLUGINS:
+#+REVEAL_DEFAULT_FRAG_STYLE:
+#+REVEAL_INIT_SCRIPT:
+#+REVEAL_HIGHLIGHT_CSS: %r/lib/css/zenburn.css
+
+
+* Emacs configuration
+
+** Few years back
+   #+BEGIN_SRC emacs-lisp -n
+     ;;; ~/.emacs.d/init.el
+
+     (package-initialize nil)
+
+     (load-file "~/.emacs.d/general_config.el")
+     (load-file "~/.emacs.d/install-packages.el")
+     (load-file "~/.emacs.d/defalias.el")
+     (load-file "~/.emacs.d/kbd_macro.el")
+     (load-file "~/.emacs.d/package_init.el")
+
+     (custom-set-variables
+      ;; custom-set-variables was added by Custom.
+      ;; If you edit it by hand, you could mess it up, so be careful.
+      ;; Your init file should contain only one such instance.
+      ;; If there is more than one, they won't work right.
+      '(ac-ispell-fuzzy-limit 4)
+      '(ac-ispell-requires 4)
+      '(custom-enabled-themes (quote (tango-dark))))
+   #+END_SRC
+
+
+** Few years back
+   #+BEGIN_SRC emacs-lisp -n
+     ;;; general_config.el
+
+     (setq debug-on-error t)
+
+     ;; Personal info
+     (setq user-full-name "Sachin"
+           user-mail-address "psachin@redhat.com")
+
+     ;; start emacs server
+     (require 'server)
+     (unless (server-running-p)
+       (server-start))
+   #+END_SRC
+
+** Few years back
+   #+BEGIN_SRC emacs-lisp -n
+     ;;; install_packages.el
+
+     (require 'package)
+
+     (add-to-list 'package-archives
+                  '("marmalade" . "http://marmalade-repo.org/packages/"))
+     (add-to-list 'package-archives
+              '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+
+     (package-initialize)
+
+     (when (not package-archive-contents)
+       (package-refresh-contents))
+
+     ;; Add your package here
+     (defvar package-list '(ac-ispell
+                            autopair
+                            company))
+   #+END_SRC
+
+
+** Few years back
+   #+BEGIN_SRC emacs-lisp -n
+     ;;; package_init.el
+
+     (yas-global-mode t)
+     (setq yas-snippet-dirs "~/.emacs.d/snippets/")
+
+     ;; hidepw
+     (add-to-list 'load-path "~/.emacs.d/extensions/hidepw/")
+     (require 'hidepw)
+
+     (add-to-list 'auto-mode-alist
+                  '("\\.gpg\\'" . (lambda () (hidepw-mode))))
+   #+END_SRC
+
+
+** Few years back
+   #+BEGIN_SRC emacs-lisp -n
+     ;;; keyboard.el
+
+     ;; Manage window size
+     (global-set-key (kbd "<C-up>") 'enlarge-window)
+     (global-set-key (kbd "<C-down>") 'shrink-window)
+     (global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
+     (global-set-key (kbd "<C-right>") 'enlarge-window-horizontall)
+   #+END_SRC
+
+** Problem?
+   - Hard to manage
+   - Lot of manual work
+   - Not re-usable
+   - Load time
+
+
+** Few months back
+   #+BEGIN_SRC emacs-lisp -n
+     ;;; init.el
+
+     (require 'package)
+     (add-to-list 'package-archives
+                  '("gnu" . "http://elpa.gnu.org/packages/"))
+     (add-to-list 'package-archives
+                  '("marmalade" . "http://marmalade-repo.org/packages/"))
+     (add-to-list 'package-archives
+                  '("melpa-stable" . "http://stable.melpa.org/packages/"))
+     (package-initialize)
+
+     (unless (package-installed-p 'use-package)
+       (package-refresh-contents)
+       (package-install 'use-package))
+
+     ;; From use-package Readme
+     (eval-when-compile
+       (require 'use-package))
+     (require 'diminish)                ;; if you use :diminish
+     (require 'bind-key)                ;; if you use any :bind variant
+
+     ;; Load ReadMe.org - My Emacs configuration
+     (org-babel-load-file (concat user-emacs-directory "ReadMe.org"))
+   #+END_SRC
+
+** ReadMe.org
+   #+BEGIN_SRC org -n
+     ,* Emacs configuration
+     ,** Usage
+     ,** Contribute
+     ,** Gnus
+     ,** Minimal config
+     ,** General configuration
+     ,** [[https://github.com/psachin/.emacs.d/blob/config.org/latex.org][Latex]]
+     ,** [[https://github.com/psachin/.emacs.d/blob/config.org/alias.org][Alias]]
+     ,** [[https://github.com/psachin/.emacs.d/blob/config.org/alias.org][Packages]]
+     ,** [[https://github.com/psachin/.emacs.d/blob/config.org/keyboard.org][Keyboard config]]
+     ,** [[https://github.com/psachin/.emacs.d/blob/config.org/custom_functions.org][Custom Function]]
+     ,** [[https://github.com/psachin/.emacs.d/blob/config.org/beta.org][Beta]]
+   #+END_SRC
+
+** Happy Emacs config :)
+   - Neat and tidy configuration
+   - Literal programing
+   - Easy to share
+   - Faster load time(~0.94 seconds)
+
+* Question
+
+* Thank you
