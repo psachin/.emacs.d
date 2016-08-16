@@ -14,11 +14,6 @@
 			 '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 
-;; Make sure Org is installed
-(unless (package-installed-p 'org)
-    (package-refresh-contents)
-    (package-install 'org))
-
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))

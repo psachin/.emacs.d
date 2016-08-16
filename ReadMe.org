@@ -1,25 +1,25 @@
 * Emacs configuration
 
 ** Usage
-   - Clone this repo(/Warning/: Backup existing =~/.emacs.d/=)
-     #+BEGIN_SRC sh
-       git clone http://github.com/psachin/.emacs.d.git -b config.org ~/.emacs.d
-     #+END_SRC
+   1. Clone this repo(/Warning/: Backup existing =~/.emacs.d/=)
+      #+BEGIN_SRC sh
+        git clone http://github.com/psachin/.emacs.d.git -b config.org ~/.emacs.d
+      #+END_SRC
 
-   - Update submodules. This will enable =hidepw=.
-     #+BEGIN_SRC sh
-       cd ~/.emacs.d
-       git submodule init
-       git submodule update
-     #+END_SRC
+   2. Update submodules. This will enable =hidepw= (/Optional/)
+      #+BEGIN_SRC sh
+        cd ~/.emacs.d
+        git submodule init
+        git submodule update
+      #+END_SRC
 
-   - Start Emacs
+   3. Start Emacs
 
 ** Contribute
-   - Feel free to send PRs
+   - Feel free to send Pull Requests
    - Create new issues
 
-** Gnus[TODO]
+** IN-PROGRESS Gnus
    - Optionally you can edit parameter in =gnus.el= and copy the file as =~/.gnus.el=
 
 ** Minimal config
@@ -45,20 +45,22 @@
    Turn of all decorations
    #+BEGIN_SRC emacs-lisp
      ;; Turn off windows decoration
-     (when window-system
-       (tool-bar-mode 0)
-       (menu-bar-mode 0)
-       (scroll-all-mode 0)
-       (scroll-bar-mode 0)
-       (tooltip-mode 0))
-     ;; Turn off during no-window
-     (menu-bar-mode 0)
+     (if window-system
+         (progn
+           (tool-bar-mode 0)
+           (menu-bar-mode 0)
+           (scroll-all-mode 0)
+           (scroll-bar-mode 0)
+           (tooltip-mode 0))
+       (menu-bar-mode 0))
    #+END_SRC
 
    Turn on the theme
    #+BEGIN_SRC emacs-lisp
      ;; Load in-built dark theme
-     (load-theme 'tango-dark)
+     (if window-system
+         (load-theme 'tango-dark)
+       (load-theme 'wombat))
    #+END_SRC
 
    I want you to greet me, Emacs!
