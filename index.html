@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title><i>tidy</i> Emacs Config</title>
+<meta name="author" content="(Sachin)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.css"/>
+
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'http://cdn.jsdelivr.net/reveal.js/3.0.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide" data-background="" data-background-size="" data-background-repeat="" data-background-transition=""><h1 class="title"><i>tidy</i> Emacs Config</h1><h2 class="author">Sachin</h2><h2 class="date"><a href="https://www.gnu.org/ghm/">GHM-2016</a></h2>
+</section>
+
+<section id="slide-orgheadline14">
+<div class="slide-header"></div>
+<h2 id="orgheadline14">Emacs configuration</h2>
+<div class="outline-text-2" id="text-orgheadline14">
+</div><div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline1">
+<div class="slide-header"></div>
+<h3 id="orgheadline1">How do you manage your Emacs configuration?</h3>
+<ul>
+<li><a href="https://github.com/bbatsov/prelude">prelude</a></li>
+<li><a href="https://github.com/syl20bnr/spacemacs">spacemacs</a></li>
+<li>Share <code>~/.emacs.d/</code></li>
+
+</ul>
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline4">
+<div class="slide-header"></div>
+<h3 id="orgheadline4">How you manage your Emacs configuration?</h3>
+<div class="outline-text-3" id="text-orgheadline4">
+</div><ul class="org-ul"><li><a id="orgheadline2"></a><code>.emacs</code><br  /><div class="org-src-container">
+
+<pre  class="src src-emacs-lisp"><span class="linenr">1: </span><span style="color: #73d216;">;;; </span><span style="color: #73d216;">.emacs</span>
+<span class="linenr">2: </span>(add-hook 'after-init-hook
+<span class="linenr">3: </span>          '(lambda ()
+<span class="linenr">4: </span>             (load <span style="color: #e9b96e;">"~/.emacs.d/my-config.el"</span>)))
+</pre>
+</div></li>
+
+<li><a id="orgheadline3"></a><code>~/.emacs.d/my-config.el</code><br  /><div class="org-src-container">
+
+<pre  class="src src-emacs-lisp"><span class="linenr">1: </span><span style="color: #73d216;">;; </span><span style="color: #73d216;">Window tweaks</span>
+<span class="linenr">2: </span>
+<span class="linenr">3: </span><span style="color: #73d216;">;; </span><span style="color: #73d216;">Add package archives</span>
+<span class="linenr">4: </span>
+<span class="linenr">5: </span><span style="color: #73d216;">;; </span><span style="color: #73d216;">Configure packages</span>
+<span class="linenr">6: </span>
+<span class="linenr">7: </span><span style="color: #73d216;">;; </span><span style="color: #73d216;">Custom methods</span>
+<span class="linenr">8: </span>
+<span class="linenr">9: </span><span style="color: #73d216;">;; </span><span style="color: #73d216;">Key bindings</span>
+</pre>
+</div></li></ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline5">
+<div class="slide-header"></div>
+<h3 id="orgheadline5">Few months back</h3>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp"><span class="linenr"> 1: </span><span style="color: #73d216;">;;; </span><span style="color: #73d216;">~/.emacs.d/init.el</span>
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span>(package-initialize nil)
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span>(load-file <span style="color: #e9b96e;">"~/.emacs.d/general_config.el"</span>)
+<span class="linenr"> 6: </span>(load-file <span style="color: #e9b96e;">"~/.emacs.d/install-packages.el"</span>)
+<span class="linenr"> 7: </span>(load-file <span style="color: #e9b96e;">"~/.emacs.d/defalias.el"</span>)
+<span class="linenr"> 8: </span>(load-file <span style="color: #e9b96e;">"~/.emacs.d/kbd_macro.el"</span>)
+<span class="linenr"> 9: </span>(load-file <span style="color: #e9b96e;">"~/.emacs.d/package_init.el"</span>)
+<span class="linenr">10: </span>
+<span class="linenr">11: </span>(custom-set-variables
+<span class="linenr">12: </span> <span style="color: #73d216;">;; </span><span style="color: #73d216;">custom-set-variables was added by Custom.</span>
+<span class="linenr">13: </span> <span style="color: #73d216;">;; </span><span style="color: #73d216;">If you edit it by hand, you could mess it up, so be careful.</span>
+<span class="linenr">14: </span> <span style="color: #73d216;">;; </span><span style="color: #73d216;">Your init file should contain only one such instance.</span>
+<span class="linenr">15: </span> <span style="color: #73d216;">;; </span><span style="color: #73d216;">If there is more than one, they won't work right.</span>
+<span class="linenr">16: </span> '(ac-ispell-fuzzy-limit 4)
+<span class="linenr">17: </span> '(ac-ispell-requires 4)
+<span class="linenr">18: </span> '(custom-enabled-themes (<span style="color: #b4fa70;">quote</span> (tango-dark))))
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline6">
+<div class="slide-header"></div>
+<h3 id="orgheadline6">Few months back</h3>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp"><span class="linenr"> 1: </span><span style="color: #73d216;">;;; </span><span style="color: #73d216;">general_config.el</span>
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span>(<span style="color: #b4fa70;">setq</span> debug-on-error t)
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #73d216;">;; </span><span style="color: #73d216;">Personal info</span>
+<span class="linenr"> 6: </span>(<span style="color: #b4fa70;">setq</span> user-full-name <span style="color: #e9b96e;">"Sachin"</span>
+<span class="linenr"> 7: </span>      user-mail-address <span style="color: #e9b96e;">"psachin@redhat.com"</span>)
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span><span style="color: #73d216;">;; </span><span style="color: #73d216;">start emacs server</span>
+<span class="linenr">10: </span>(<span style="color: #b4fa70;">require</span> '<span style="color: #e9b2e3;">server</span>)
+<span class="linenr">11: </span>(<span style="color: #b4fa70;">unless</span> (server-running-p)
+<span class="linenr">12: </span>  (server-start))
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline7">
+<div class="slide-header"></div>
+<h3 id="orgheadline7">Few months back</h3>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp"><span class="linenr"> 1: </span><span style="color: #73d216;">;;; </span><span style="color: #73d216;">install_packages.el</span>
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span>(<span style="color: #b4fa70;">require</span> '<span style="color: #e9b2e3;">package</span>)
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span>(add-to-list 'package-archives
+<span class="linenr"> 6: </span>             '(<span style="color: #e9b96e;">"marmalade"</span> . <span style="color: #e9b96e;">"http://marmalade-repo.org/packages/"</span>))
+<span class="linenr"> 7: </span>(add-to-list 'package-archives
+<span class="linenr"> 8: </span>         '(<span style="color: #e9b96e;">"melpa-stable"</span> . <span style="color: #e9b96e;">"http://stable.melpa.org/packages/"</span>) t)
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span>(package-initialize)
+<span class="linenr">11: </span>
+<span class="linenr">12: </span>(<span style="color: #b4fa70;">when</span> (not package-archive-contents)
+<span class="linenr">13: </span>  (package-refresh-contents))
+<span class="linenr">14: </span>
+<span class="linenr">15: </span><span style="color: #73d216;">;; </span><span style="color: #73d216;">Add your package here</span>
+<span class="linenr">16: </span>(<span style="color: #b4fa70;">defvar</span> <span style="color: #fcaf3e;">package-list</span> '(ac-ispell
+<span class="linenr">17: </span>                       autopair
+<span class="linenr">18: </span>                       company))
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline8">
+<div class="slide-header"></div>
+<h3 id="orgheadline8">Few months back</h3>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp"><span class="linenr"> 1: </span><span style="color: #73d216;">;;; </span><span style="color: #73d216;">package_init.el</span>
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span>(yas-global-mode t)
+<span class="linenr"> 4: </span>(<span style="color: #b4fa70;">setq</span> yas-snippet-dirs <span style="color: #e9b96e;">"~/.emacs.d/snippets/"</span>)
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span><span style="color: #73d216;">;; </span><span style="color: #73d216;">hidepw</span>
+<span class="linenr"> 7: </span>(add-to-list 'load-path <span style="color: #e9b96e;">"~/.emacs.d/extensions/hidepw/"</span>)
+<span class="linenr"> 8: </span>(<span style="color: #b4fa70;">require</span> '<span style="color: #e9b2e3;">hidepw</span>)
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span>(add-to-list 'auto-mode-alist
+<span class="linenr">11: </span>             '(<span style="color: #e9b96e;">"\\.gpg\\'"</span> . (<span style="color: #b4fa70;">lambda</span> () (hidepw-mode))))
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline9">
+<div class="slide-header"></div>
+<h3 id="orgheadline9">Few months back</h3>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp"><span class="linenr">1: </span><span style="color: #73d216;">;;; </span><span style="color: #73d216;">keyboard.el</span>
+<span class="linenr">2: </span>
+<span class="linenr">3: </span><span style="color: #73d216;">;; </span><span style="color: #73d216;">Manage window size</span>
+<span class="linenr">4: </span>(global-set-key (kbd <span style="color: #e9b96e;">"&lt;C-up&gt;"</span>) 'enlarge-window)
+<span class="linenr">5: </span>(global-set-key (kbd <span style="color: #e9b96e;">"&lt;C-down&gt;"</span>) 'shrink-window)
+<span class="linenr">6: </span>(global-set-key (kbd <span style="color: #e9b96e;">"&lt;C-left&gt;"</span>) 'shrink-window-horizontally)
+<span class="linenr">7: </span>(global-set-key (kbd <span style="color: #e9b96e;">"&lt;C-right&gt;"</span>) 'enlarge-window-horizontall)
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline10">
+<div class="slide-header"></div>
+<h3 id="orgheadline10">Problem?</h3>
+<ul>
+<li>Hard to manage</li>
+<li>Lot of manual work</li>
+<li>Not re-usable</li>
+<li>Load time</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline11">
+<div class="slide-header"></div>
+<h3 id="orgheadline11">My current configuration</h3>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp"><span class="linenr"> 1: </span><span style="color: #73d216;">;;; </span><span style="color: #73d216;">init.el</span>
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span>(<span style="color: #b4fa70;">require</span> '<span style="color: #e9b2e3;">package</span>)
+<span class="linenr"> 4: </span>(add-to-list 'package-archives
+<span class="linenr"> 5: </span>             '(<span style="color: #e9b96e;">"gnu"</span> . <span style="color: #e9b96e;">"http://elpa.gnu.org/packages/"</span>))
+<span class="linenr"> 6: </span>(add-to-list 'package-archives
+<span class="linenr"> 7: </span>             '(<span style="color: #e9b96e;">"marmalade"</span> . <span style="color: #e9b96e;">"http://marmalade-repo.org/packages/"</span>))
+<span class="linenr"> 8: </span>(add-to-list 'package-archives
+<span class="linenr"> 9: </span>             '(<span style="color: #e9b96e;">"melpa-stable"</span> . <span style="color: #e9b96e;">"http://stable.melpa.org/packages/"</span>))
+<span class="linenr">10: </span>(package-initialize)
+<span class="linenr">11: </span>
+<span class="linenr">12: </span>(<span style="color: #b4fa70;">unless</span> (package-installed-p 'use-package)
+<span class="linenr">13: </span>  (package-refresh-contents)
+<span class="linenr">14: </span>  (package-install 'use-package))
+<span class="linenr">15: </span>
+<span class="linenr">16: </span><span style="color: #73d216;">;; </span><span style="color: #73d216;">From use-package Readme</span>
+<span class="linenr">17: </span>(<span style="color: #b4fa70;">eval-when-compile</span>
+<span class="linenr">18: </span>  (<span style="color: #b4fa70;">require</span> '<span style="color: #e9b2e3;">use-package</span>))
+<span class="linenr">19: </span>(<span style="color: #b4fa70;">require</span> '<span style="color: #e9b2e3;">diminish</span>)                <span style="color: #73d216;">;; </span><span style="color: #73d216;">if you use :diminish</span>
+<span class="linenr">20: </span>(<span style="color: #b4fa70;">require</span> '<span style="color: #e9b2e3;">bind-key</span>)                <span style="color: #73d216;">;; </span><span style="color: #73d216;">if you use any :bind variant</span>
+<span class="linenr">21: </span>
+<span class="linenr">22: </span><span style="color: #73d216;">;; </span><span style="color: #73d216;">Load ReadMe.org - My Emacs configuration</span>
+<span class="linenr">23: </span>(org-babel-load-file (concat user-emacs-directory <span style="color: #e9b96e;">"ReadMe.org"</span>))
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline12">
+<div class="slide-header"></div>
+<h3 id="orgheadline12">ReadMe.org</h3>
+<div class="org-src-container">
+
+<pre  class="src src-org"><span class="linenr"> 1: </span><span style="color: #fce94f;">* </span><span style="color: #729fcf; text-decoration: underline;"><a href="https://github.com/psachin/.emacs.d#emacs-configuration">Emacs configuration</a></span>
+<span class="linenr"> 2: </span><span style="color: #fcaf3e;">** </span><span style="color: #729fcf; text-decoration: underline;"><a href="https://github.com/psachin/.emacs.d#usage">Usage</a></span>
+<span class="linenr"> 3: </span><span style="color: #fcaf3e;">** Contribute</span>
+<span class="linenr"> 4: </span><span style="color: #fcaf3e;">** Gnus</span>
+<span class="linenr"> 5: </span><span style="color: #fcaf3e;">** </span><span style="color: #729fcf; text-decoration: underline;"><a href="https://github.com/psachin/.emacs.d#minimal-config">Minimal config</a></span>
+<span class="linenr"> 6: </span><span style="color: #fcaf3e;">** </span><span style="color: #729fcf; text-decoration: underline;"><a href="https://github.com/psachin/.emacs.d#general-configuration">General configuration</a></span>
+<span class="linenr"> 7: </span><span style="color: #fcaf3e;">** </span><span style="color: #729fcf; text-decoration: underline;"><a href="https://github.com/psachin/.emacs.d/blob/config.org/latex.org">Latex</a></span>
+<span class="linenr"> 8: </span><span style="color: #fcaf3e;">** </span><span style="color: #729fcf; text-decoration: underline;"><a href="https://github.com/psachin/.emacs.d/blob/config.org/alias.org">Alias</a></span>
+<span class="linenr"> 9: </span><span style="color: #fcaf3e;">** </span><span style="color: #729fcf; text-decoration: underline;"><a href="https://github.com/psachin/.emacs.d/blob/config.org/alias.org">Packages</a></span>
+<span class="linenr">10: </span><span style="color: #fcaf3e;">** </span><span style="color: #729fcf; text-decoration: underline;"><a href="https://github.com/psachin/.emacs.d/blob/config.org/keyboard.org">Keyboard config</a></span>
+<span class="linenr">11: </span><span style="color: #fcaf3e;">** </span><span style="color: #729fcf; text-decoration: underline;"><a href="https://github.com/psachin/.emacs.d/blob/config.org/custom_functions.org">Custom Function</a></span>
+<span class="linenr">12: </span><span style="color: #fcaf3e;">** </span><span style="color: #729fcf; text-decoration: underline;"><a href="https://github.com/psachin/.emacs.d/blob/config.org/beta.org">Beta</a></span>
+</pre>
+</div>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline13">
+<div class="slide-header"></div>
+<h3 id="orgheadline13">Happy Emacs config :)</h3>
+<ul>
+<li>Neat and tidy configuration</li>
+<li>Literal programing</li>
+<li>Easy to share</li>
+<li>Faster load time(~0.94 seconds)</li>
+
+</ul>
+
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline15">
+<div class="slide-header"></div>
+<h2 id="orgheadline15">Question</h2>
+<div class="slide-footer"></div>
+</section>
+<section id="slide-orgheadline16">
+<div class="slide-header"></div>
+<h2 id="orgheadline16">Thank you</h2>
+<p>
+<a href="https://github.com/psachin/.emacs.d">https://github.com/psachin/.emacs.d</a>
+</p>
+
+<p>
+<a href="mailto:psachin@redhat.com">psachin@redhat.com</a>
+</p>
+
+<p>
+Made with Love &amp; <a href="https://www.gnu.org/software/emacs/">GNU Emacs</a>
+</p>
+<div class="slide-footer"></div>
+</section>
+</section>
+</div>
+</div>
+<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/head.min.js"></script>
+<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+,});
+</script>
+</body>
+</html>
