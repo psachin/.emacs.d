@@ -1,7 +1,9 @@
-#+TITLE: Tidy Emacs Config
+#+TITLE: /tidy/ Emacs Config
 #+AUTHOR: Sachin
-#+DATE: 19 AUG 2016
 
+#+DATE: [[https://www.gnu.org/ghm/][GHM-2016]]
+
+#+LANGUAGE: en
 #+OPTIONS: timestamp:nil, email:nil
 #+OPTIONS: reveal_center:t reveal_control:t reveal_height:-1
 #+OPTIONS: reveal_history:nil reveal_keyboard:t reveal_overview:t
@@ -38,10 +40,36 @@
 #+REVEAL_INIT_SCRIPT:
 #+REVEAL_HIGHLIGHT_CSS: %r/lib/css/zenburn.css
 
+#+CREATOR: <a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.3.5)
 
 * Emacs configuration
+** How do you manage your Emacs configuration?
+   - [[https://github.com/bbatsov/prelude][prelude]]
+   - [[https://github.com/syl20bnr/spacemacs][spacemacs]]
+   - Share =~/.emacs.d/=
+** How you manage your Emacs configuration?
+***** =.emacs=
+      #+BEGIN_SRC emacs-lisp -n
+        ;;; .emacs
+        (add-hook 'after-init-hook
+                  '(lambda ()
+                     (load "~/.emacs.d/my-config.el")))
+      #+END_SRC
 
-** Few years back
+***** =~/.emacs.d/my-config.el=
+      #+BEGIN_SRC emacs-lisp -n
+        ;; Window tweaks
+
+        ;; Add package archives
+
+        ;; Configure packages
+
+        ;; Custom methods
+
+        ;; Key bindings
+      #+END_SRC
+
+** Few months back
    #+BEGIN_SRC emacs-lisp -n
      ;;; ~/.emacs.d/init.el
 
@@ -63,8 +91,7 @@
       '(custom-enabled-themes (quote (tango-dark))))
    #+END_SRC
 
-
-** Few years back
+** Few months back
    #+BEGIN_SRC emacs-lisp -n
      ;;; general_config.el
 
@@ -80,7 +107,7 @@
        (server-start))
    #+END_SRC
 
-** Few years back
+** Few months back
    #+BEGIN_SRC emacs-lisp -n
      ;;; install_packages.el
 
@@ -102,8 +129,7 @@
                             company))
    #+END_SRC
 
-
-** Few years back
+** Few months back
    #+BEGIN_SRC emacs-lisp -n
      ;;; package_init.el
 
@@ -118,8 +144,7 @@
                   '("\\.gpg\\'" . (lambda () (hidepw-mode))))
    #+END_SRC
 
-
-** Few years back
+** Few months back
    #+BEGIN_SRC emacs-lisp -n
      ;;; keyboard.el
 
@@ -136,8 +161,7 @@
    - Not re-usable
    - Load time
 
-
-** Few months back
+** My current configuration
    #+BEGIN_SRC emacs-lisp -n
      ;;; init.el
 
@@ -166,12 +190,12 @@
 
 ** ReadMe.org
    #+BEGIN_SRC org -n
-     ,* Emacs configuration
-     ,** Usage
+     ,* [[https://github.com/psachin/.emacs.d#emacs-configuration][Emacs configuration]]
+     ,** [[https://github.com/psachin/.emacs.d#usage][Usage]]
      ,** Contribute
      ,** Gnus
-     ,** Minimal config
-     ,** General configuration
+     ,** [[https://github.com/psachin/.emacs.d#minimal-config][Minimal config]]
+     ,** [[https://github.com/psachin/.emacs.d#general-configuration][General configuration]]
      ,** [[https://github.com/psachin/.emacs.d/blob/config.org/latex.org][Latex]]
      ,** [[https://github.com/psachin/.emacs.d/blob/config.org/alias.org][Alias]]
      ,** [[https://github.com/psachin/.emacs.d/blob/config.org/alias.org][Packages]]
@@ -187,5 +211,10 @@
    - Faster load time(~0.94 seconds)
 
 * Question
-
 * Thank you
+
+  https://github.com/psachin/.emacs.d
+
+  [[mailto:psachin@redhat.com][psachin@redhat.com]]
+
+  Made with Love & [[https://www.gnu.org/software/emacs/][GNU Emacs]]
