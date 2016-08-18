@@ -270,7 +270,7 @@
    I want to have special section for LaTeX
    #+BEGIN_SRC emacs-lisp
      ;;; Load latex.el
-     (org-babel-load-file (concat user-emacs-directory "latex.org"))
+     (my-tangle-config-org (concat user-emacs-directory "latex.org"))
    #+END_SRC
 
 ** [[./alias.org][Alias]]
