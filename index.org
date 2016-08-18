@@ -1,7 +1,7 @@
 #+TITLE: /tidy/ Emacs Config
 #+AUTHOR: Sachin
 
-#+DATE: [[https://www.gnu.org/ghm/][GHM-2016]]
+#+DATE: [[https://www.gnu.org/ghm/][GHM-2016]], Rennes
 
 #+LANGUAGE: en
 #+OPTIONS: timestamp:nil, email:nil
@@ -47,7 +47,7 @@
    - [[https://github.com/bbatsov/prelude][prelude]]
    - [[https://github.com/syl20bnr/spacemacs][spacemacs]]
    - Share =~/.emacs.d/=
-** How you manage your Emacs configuration?
+** How do you manage your Emacs configuration?
 ***** =.emacs=
       #+BEGIN_SRC emacs-lisp -n
         ;;; .emacs
@@ -56,6 +56,7 @@
                      (load "~/.emacs.d/my-config.el")))
       #+END_SRC
 
+** How do you manage your Emacs configuration?
 ***** =~/.emacs.d/my-config.el=
       #+BEGIN_SRC emacs-lisp -n
         ;; Window tweaks
@@ -198,7 +199,7 @@
      ,** [[https://github.com/psachin/.emacs.d#general-configuration][General configuration]]
      ,** [[https://github.com/psachin/.emacs.d/blob/config.org/latex.org][Latex]]
      ,** [[https://github.com/psachin/.emacs.d/blob/config.org/alias.org][Alias]]
-     ,** [[https://github.com/psachin/.emacs.d/blob/config.org/alias.org][Packages]]
+     ,** [[https://github.com/psachin/.emacs.d/blob/config.org/packages.org][Packages]]
      ,** [[https://github.com/psachin/.emacs.d/blob/config.org/keyboard.org][Keyboard config]]
      ,** [[https://github.com/psachin/.emacs.d/blob/config.org/custom_functions.org][Custom Function]]
      ,** [[https://github.com/psachin/.emacs.d/blob/config.org/beta.org][Beta]]
