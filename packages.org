@@ -209,6 +209,19 @@
            (push 'company-robe company-backends))
        #+END_SRC
 
+   - Markdown
+	 #+BEGIN_SRC emacs-lisp
+       ;; markdown-mode
+       (use-package markdown-mode
+         :ensure t
+         :commands (markdown-mode gfm-mode)
+         :mode (("README\\.md\\'" . gfm-mode)
+                ("ReadMe\\.md\\'" . gfm-mode)
+                ("\\.md\\'" . markdown-mode)
+                ("\\.markdown\\'" . markdown-mode))
+         :init (setq markdown-command "multimarkdown"))
+	 #+END_SRC
+
    - Presentation
 	 + reveal.js
        #+BEGIN_SRC emacs-lisp
