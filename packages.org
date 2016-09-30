@@ -224,6 +224,24 @@
            :ensure t)
        #+END_SRC
 
+   - IRC
+	 + Weechat
+	   - /Notes/
+		 + Need to setup relay server:
+           https://www.weechat.org/files/doc/stable/weechat_user.en.html#relay_weechat_protocol
+		 + Default args
+		   - *host*: =localhost=
+		   - *port*: 9000
+		   - *mode*: =plain=
+		   - *password*: =mypassword=
+
+	   #+BEGIN_SRC emacs-lisp
+         ;; weechat.el
+         (use-package weechat
+           :defer 3
+           :ensure t)
+	   #+END_SRC
+
 ** Manual
    - [[https://github.com/jekor/hidepw][hidepw]]: Emacs minor mode for hiding passwords (anti-shoulder-surfing)
      #+BEGIN_SRC emacs-lisp
