@@ -182,7 +182,7 @@
        (global-whitespace-mode +1)
 
        ;; Full path of buffer in mode-line
-       (setq uniquify-buffer-name-style 'reverse)
+       (setq uniquify-buffer-name-style 'forward)
      #+END_SRC
 
    - Org-mode
@@ -194,12 +194,17 @@
                         "TODO(t)"
                         "FIXME(f)"
                         "IN-PROGRESS(p)"
+                        "NEXT(n)"
                         "WAITING(w)"
                         "DONE(d)"
-                        "CANCLED(c)")))
+                        "CANCELLED(c)")))
 
        ;; This will create a date-time stamp for tasks marked as 'DONE'.
        (setq-default org-log-done t)
+
+       ;; Org agenda files
+       (setq org-agenda-files (list "~/agenda/work.org"
+                                    "~/agenda/todo.org"))
 
        ;; Org babel languages
        (org-babel-do-load-languages
