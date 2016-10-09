@@ -5,13 +5,13 @@
 
 (require 'package)
 (add-to-list 'package-archives
-			 '("gnu" . "http://elpa.gnu.org/packages/"))
+			 '("gnu" . "https://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
+             '("marmalade" . "https://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives
-			 '("melpa-stable" . "http://stable.melpa.org/packages/"))
+			 '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (add-to-list 'package-archives
-			 '("melpa" . "http://melpa.org/packages/"))
+			 '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
