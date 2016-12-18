@@ -60,34 +60,35 @@
      #+BEGIN_SRC emacs-lisp
        ;;; Company mode
        (use-package company
-	 :ensure t
-	 :config
-	 (global-company-mode t))
+     	:ensure t
+     	:config
+     	(global-company-mode t))
      #+END_SRC
 
    - Auto Complete
      #+BEGIN_SRC emacs-lisp
        ;; auto-complete
        (use-package auto-complete
-         :ensure t
-         :config
-         (ac-config-default))
+     	:ensure t
+     	:diminish auto-complete-mode
+     	:config
+     	(ac-config-default))
      #+END_SRC
 
    - Auto complete ispell
      #+BEGIN_SRC emacs-lisp
        ;; ac-ispell
        (use-package ac-ispell
-         :ensure t
-         :diminish ac-ispell-mode
-         :config
-         (custom-set-variables
-          '(ac-ispell-requires 4)
-          '(ac-ispell-fuzzy-limit 4))
+     	:ensure t
+     	:diminish ac-ispell-mode
+     	:config
+     	(custom-set-variables
+     	 '(ac-ispell-requires 4)
+     	 '(ac-ispell-fuzzy-limit 4))
 
-         (eval-after-load "auto-complete"
+     	(eval-after-load "auto-complete"
            '(progn
-              (ac-ispell-setup))))
+     		 (ac-ispell-setup))))
      #+END_SRC
 
    - Python
@@ -142,6 +143,7 @@
        ;; Flycheck
        (use-package flycheck
          :ensure t
+		 :diminish flycheck-mode
          :config
          (global-flycheck-mode t))
      #+END_SRC
@@ -151,6 +153,7 @@
        ;; Elpy
        (use-package elpy
          :ensure t
+		 :diminish elpy-mode
          :config
          (elpy-enable)
          ;; Don't use flymake if flycheck is available
@@ -236,6 +239,13 @@
          (use-package htmlize
            :ensure t)
        #+END_SRC
+
+   - multiple-cursor
+
+	 #+BEGIN_SRC emacs-lisp
+       (use-package multiple-cursors
+        :ensure t)
+	 #+END_SRC
 
    - IRC
 	 + Weechat
