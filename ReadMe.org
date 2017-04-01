@@ -185,44 +185,6 @@
        (setq uniquify-buffer-name-style 'forward)
      #+END_SRC
 
-   - Org-mode
-     #+BEGIN_SRC emacs-lisp
-       ;; Org-mode
-       ;; Add workflow state in org-mode
-       (setq-default org-todo-keywords
-                     '((sequence
-                        "TODO(t)"
-                        "FIXME(f)"
-                        "IN-PROGRESS(p)"
-                        "NEXT(n)"
-                        "WAITING(w)"
-                        "DONE(d)"
-                        "CANCELLED(c)")))
-
-       ;; This will create a date-time stamp for tasks marked as 'DONE'.
-       (setq-default org-log-done t)
-
-       ;; Org agenda files
-       (setq org-agenda-files (list "~/agenda/work.org"
-                                    "~/agenda/todo.org"))
-
-       ;; Org babel languages
-       (org-babel-do-load-languages
-        'org-babel-load-languages
-        '((emacs-lisp . t)
-          (python . t)
-          (C . t)
-          (calc . t)
-          (latex . t)
-          (java . t)
-          (ruby . t)
-          (lisp . t)
-          (scheme . t)
-          (sh . t)
-          (sqlite . t)
-          (js . t)))
-     #+END_SRC
-
    - Misc
      #+BEGIN_SRC emacs-lisp
        ;;; Misc
@@ -270,6 +232,13 @@
        (unless (server-running-p)
          (server-start))
      #+END_SRC
+
+** [[./myorgmode.org][Org Mode]]
+   Org mode customizations
+   #+BEGIN_SRC emacs-lisp
+     ;;; Load org.el
+     (org-babel-load-file (concat user-emacs-directory "myorgmode.org"))
+   #+END_SRC
 
 ** [[./latex.org][LaTeX]]
    I want to have special section for LaTeX

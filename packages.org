@@ -5,11 +5,11 @@
      #+BEGIN_SRC emacs-lisp
        ;; Yasnippet
        (use-package yasnippet
-         :ensure t
-         :diminish yas-minor-mode
-         :config
-         (setq yas-snippet-dirs (concat user-emacs-directory "snippets"))
-         (yas-global-mode))
+        :ensure t
+        :diminish yas-minor-mode
+        :config
+        (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+        (yas-global-mode 1))
      #+END_SRC
 
    - insert-shebang
@@ -240,29 +240,26 @@
            :ensure t)
        #+END_SRC
 
-   - multiple-cursor
-
+   - Multiple-cursor
 	 #+BEGIN_SRC emacs-lisp
        (use-package multiple-cursors
-        :ensure t)
+         :ensure t)
 	 #+END_SRC
 
    - IRC
-	 + Weechat
-	   - /Notes/
-		 + Need to setup relay server:
-           https://www.weechat.org/files/doc/stable/weechat_user.en.html#relay_weechat_protocol
-		 + Default args
-		   - *host*: =localhost=
-		   - *port*: 9000
-		   - *mode*: =plain=
-		   - *password*: =mypassword=
-
+	 + Weechat config
 	   #+BEGIN_SRC emacs-lisp
-         ;; weechat.el
-         (use-package weechat
-           :defer 3
-           :ensure t)
+          ;; Load weechat
+          ;; Need to setup relay server:
+          ;; https://www.weechat.org/files/doc/stable/weechat_user.en.html#relay_weechat_protocol
+          ;; Default args:
+          ;; - host: localhost
+          ;; - port: 9000
+          ;; - mode: plain
+          ;; - password: mypassword
+          (use-package weechat
+       	    :defer 3
+       	    :ensure t)
 	   #+END_SRC
 
 ** Manual

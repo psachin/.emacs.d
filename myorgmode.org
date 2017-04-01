@@ -1,0 +1,47 @@
+* Org mode customizations
+** Agenda
+   - Add workflow state in org-mode
+	 #+BEGIN_SRC emacs-lisp
+       (setq-default org-todo-keywords
+     				'((sequence
+                        "TODO(t)"
+                        "FIXME(f)"
+                        "IN-PROGRESS(p)"
+                        "NEXT(n)"
+                        "WAITING(w)"
+                        "DONE(d)"
+                        "CANCELLED(c)")))
+	 #+END_SRC
+
+   - This will create a date-time stamp for tasks marked as 'DONE'.
+	 #+BEGIN_SRC emacs-lisp
+       ;; Time finished
+       (setq org-log-done 'time)
+       ;; Closing note
+       (setq org-log-done 'note)
+	 #+END_SRC
+
+   - Org agenda files
+	 #+BEGIN_SRC emacs-lisp
+       (setq org-agenda-files (quote ("~/agenda/work"
+     								 "~/agenda/todo")))
+	 #+END_SRC
+
+** Babel
+   - Org babel languages
+	 #+BEGIN_SRC emacs-lisp
+       (org-babel-do-load-languages
+        'org-babel-load-languages
+        '((emacs-lisp . t)
+     	 (python . t)
+     	 (C . t)
+     	 (calc . t)
+     	 (latex . t)
+     	 (java . t)
+     	 (ruby . t)
+     	 (lisp . t)
+     	 (scheme . t)
+     	 (sh . t)
+     	 (sqlite . t)
+     	 (js . t)))
+	 #+END_SRC
