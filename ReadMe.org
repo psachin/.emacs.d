@@ -272,6 +272,13 @@
      (org-babel-load-file (concat user-emacs-directory "custom_functions.org"))
    #+END_SRC
 
+** [[./mytime.org][My time]]
+   Appointment customizations
+   #+BEGIN_SRC emacs-lisp
+     ;;; Load mytime.el
+     (org-babel-load-file (concat user-emacs-directory "mytime.org"))
+   #+END_SRC
+
 ** [[./beta.org][Beta]]
    New settings/features/packages I want to test before including them
    to my real configuration.
