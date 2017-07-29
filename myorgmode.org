@@ -28,20 +28,20 @@
 	 #+END_SRC
 
 ** Babel
-   - Org babel languages
-	 #+BEGIN_SRC emacs-lisp
-       (org-babel-do-load-languages
-        'org-babel-load-languages
-        '((emacs-lisp . t)
-     	 (python . t)
-     	 (C . t)
-     	 (calc . t)
-     	 (latex . t)
-     	 (java . t)
-     	 (ruby . t)
-     	 (lisp . t)
-     	 (scheme . t)
-     	 (sh . t)
-     	 (sqlite . t)
-     	 (js . t)))
-	 #+END_SRC
+*** Org babel languages
+	#+BEGIN_SRC emacs-lisp
+      (org-babel-do-load-languages
+       'org-babel-load-languages
+       '((emacs-lisp . t)
+    	 (python . t)
+    	 (C . t)
+    	 (calc . t)
+    	 (latex . t)
+    	 (java . t)
+    	 (ruby . t)
+    	 (lisp . t)
+    	 (scheme . t)
+    	 (shell . t)
+    	 (sqlite . t)
+    	 (js . t)))
+	#+END_SRC
