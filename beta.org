@@ -1,37 +1,79 @@
 * Beta testing
+  This is setting/new packages which I'm trying.
+
 ** Settings
    - No settings to test
 
 ** Packages
-   - Enable transparency with alpha
-	 #+BEGIN_SRC emacs-lisp
-       ;; alpha
-       ;; C-> Transparency increase
-       ;; C-< Transparency decrease
-       (use-package alpha
-         :ensure t)
-	 #+END_SRC
+*** Enable transparency with alpha
+	#+BEGIN_SRC emacs-lisp
+      ;; alpha
+      ;; C-> Transparency increase
+      ;; C-< Transparency decrease
+      (use-package alpha
+    	:ensure t)
+	#+END_SRC
 
-   - Powerline
-	 #+BEGIN_SRC emacs-lisp
-       ;; Powerline
-       (when window-system
-         (use-package powerline
-           :ensure t))
-	 #+END_SRC
+*** Powerline
+	#+BEGIN_SRC emacs-lisp
+      ;; Powerline
+      (when window-system
+    	(use-package powerline
+          :ensure t))
+	#+END_SRC
+
+*** mu4e
+	#+BEGIN_SRC emacs-lisp
+      (use-package mu4e
+    	:disabled
+    	:load-path "~/github/mu/mu4e")
+	#+END_SRC
+
+*** Mu4e-alert
+	#+BEGIN_SRC emacs-lisp
+      (use-package mu4e-alert
+    	:disabled
+    	:ensure t
+    	:after mu4e
+    	:init
+    	(setq mu4e-alert-interesting-mail-query
+              (concat
+               "flag:unread maildir:/iclcoolster/INBOX"))
+    	(mu4e-alert-enable-mode-line-display)
+    	(defun gjstein-refresh-mu4e-alert-mode-line ()
+          (interactive)
+          (mu4e~proc-kill)
+          (mu4e-alert-enable-mode-line-display))
+    	(run-with-timer 0 60 'gjstein-refresh-mu4e-alert-mode-line))
+	#+END_SRC
+
+*** icicles
+	#+BEGIN_SRC emacs-lisp
+      (use-package icicles
+    	:disabled
+    	:load-path "extensions/icicles/")
+	#+END_SRC
+
+*** Super agenda
+	#+BEGIN_SRC emacs-lisp
+	  ;; org-super-agenda
+	  (use-package org-super-agenda
+		:disabled
+		:config (org-super-agenda-mode))
+	#+END_SRC
 
 ** Custom functions
-   - Surround string with tags
-     #+BEGIN_SRC emacs-lisp
-       (defun surround(tag)
-         "Surround word within TAG.
-         TAG can be <>," ",' ',[ ], etc."
-         (called-interactively-p "sWord should be inside: ")
-         (backward-word)
-         (mark-word)
-         (when (region-active-p)
-           (kill-region (region-beginning) (region-end)))
-         (insert tag)
-         (backward-char)
-         (yank))
-     #+END_SRC
+*** Surround string with tags
+    #+BEGIN_SRC emacs-lisp
+      (defun surround(tag)
+    	"Surround word within TAG.
+    	TAG can be <>," ",' ',[ ], etc."
+    	(called-interactively-p "sWord should be inside: ")
+    	(backward-word)
+    	(mark-word)
+    	(when (region-active-p)
+          (kill-region (region-beginning) (region-end)))
+    	(insert tag)
+    	(backward-char)
+    	(yank))
+    #+END_SRC

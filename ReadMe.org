@@ -19,8 +19,8 @@
    - Feel free to send Pull Requests
    - Create new issues
 
-** IN-PROGRESS Gnus
-   - Optionally you can edit parameter in =gnus.el= and copy the file as =~/.gnus.el=
+** Gnus
+   - Optionally edit =gnus.el= and copy the file as =~/.gnus.el=
 
 ** Minimal config
 

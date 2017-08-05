@@ -61,3 +61,5 @@ clean :
 	@rm -f $(AUTOLOADS_FILE) *.elc *~ */*.elc */*~ .*~
 	@rm -f \#*\#
 
+cleanall:
+	@for h in `git ls-files -o`; do rm -rvf $h; done
