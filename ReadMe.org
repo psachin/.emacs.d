@@ -1,19 +1,41 @@
-* Emacs configuration
+#+TITLE: Emacs configuration
+#+DATE: \today
+#+OPTIONS: texht:t
+#+OPTIONS: toc:nil email:t
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS:
+#+LATEX_HEADER_EXTRA:
+#+LaTeX_HEADER: \usepackage[a4paper, total={7in, 10in}]{geometry}
+#+LaTeX_HEADER: \usepackage[utf8]{inputenc}
+#+LaTeX_HEADER: \usepackage[english]{babel}
+
+#+LaTeX_HEADER: \usepackage{minted}
+#+LaTeX_HEADER: \usemintedstyle{emacs}
+
+#+LaTeX_HEADER: \renewcommand{\familydefault}{\rmdefault}
+#+LaTeX_HEADER: \usepackage[usenames, dvipsnames]{xcolor}
+#+LaTeX_HEADER: \pagenumbering{arabic}
+#+LaTeX_HEADER: \usepackage{hyperref}
+#+LaTeX_HEADER: \hypersetup{colorlinks=true, linkcolor=blue, filecolor=magenta, urlcolor=cyan}
+#+LaTeX_HEADER: \urlstyle{same}
+#+LaTeX_HEADER: \usepackage{attachfile}
 
 ** Usage
-   1. Clone this repo(/Warning/: Backup existing =~/.emacs.d/=)
-      #+BEGIN_SRC sh
-        git clone http://github.com/psachin/.emacs.d.git -b config.org ~/.emacs.d
-      #+END_SRC
+   - Clone this repo(/Warning/: Backup existing =~/.emacs.d/= and =~/.emacs=)
 
-   2. Update submodules. This will enable =hidepw= (/Optional/)
-      #+BEGIN_SRC sh
-        cd ~/.emacs.d
-        git submodule init
-        git submodule update
-      #+END_SRC
+     #+BEGIN_SRC sh
+       git clone http://github.com/psachin/.emacs.d.git ~/.emacs.d
+     #+END_SRC
 
-   3. Start Emacs
+   - Update submodules. This will enable =hidepw= (/Optional/)
+
+     #+BEGIN_SRC sh
+       cd ~/.emacs.d
+       git submodule init
+       git submodule update
+     #+END_SRC
+
+   - Start Emacs
 
 ** Contribute
    - Feel free to send Pull Requests
@@ -26,20 +48,20 @@
 
    Change user name and Email
    #+BEGIN_SRC emacs-lisp
-   ;; Load my details
-   (setq user-full-name "Sachin"
-	 user-mail-address "psachin@redhat.com")
+     ;; Load my details
+     (setq user-full-name "Sachin"
+	   user-mail-address "psachin@redhat.com")
    #+END_SRC
 
    Do not mess up =init.el=
    #+BEGIN_SRC emacs-lisp
-   ;; Me: Emacs..
-   ;; Emacs: Yes Master?
-   ;; Me: Put your customization inside custom.el. I don't want init.el to be messed up by you.
-   ;; Emacs: As you wish Master.
-   (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-   (when (file-exists-p custom-file)
-     (load custom-file))
+     ;; Me: Emacs..
+     ;; Emacs: Yes Master?
+     ;; Me: Put your customization inside custom.el. I don't want init.el to be messed up by you.
+     ;; Emacs: As you wish Master.
+     (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+     (when (file-exists-p custom-file)
+       (load custom-file))
    #+END_SRC
 
    Turn of all decorations
@@ -76,10 +98,10 @@
 ** General configuration
 
    - Frame title
-	 #+BEGIN_SRC emacs-lisp
+     #+BEGIN_SRC emacs-lisp
        ;; Frame title
        (setq frame-title-format "Emacser")
-	 #+END_SRC
+     #+END_SRC
 
    - Set visible bell
      #+BEGIN_SRC emacs-lisp
