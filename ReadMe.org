@@ -103,14 +103,22 @@
        (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
      #+END_SRC
 
-   - Minor mode tweaks
+   - modeline
      #+BEGIN_SRC emacs-lisp
        ;;; Minor mode tweaks
        ;; Enable column-number mode
        (column-number-mode t)
 
+       ;; Battery
        (ignore-errors (display-battery-mode t))
+       (setq battery-mode-line-format "[%p/%L]")
+
+       ;; Date/time
        (display-time-mode t)
+       (setq display-time-24hr-format t)
+       (setq display-time-format "[%d-%m(%b)-%Y-%H:%M]")
+
+       ;; File size
        (size-indication-mode t)
 
        ;; Show funtion name in a mode line
