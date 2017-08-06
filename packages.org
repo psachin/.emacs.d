@@ -100,51 +100,45 @@
     #+END_SRC
 
 **** Python Jedi
-     From emacs-jedi readme
-     #+BEGIN_SRC sh
-       M-x jedi:install-server RET
-     #+END_SRC
-
-     Then open Python file.
      #+BEGIN_SRC emacs-lisp
-       ;;; Python Jedi
-       ;;; From emacs-jedi readme
-       ;; Type:
-       ;;     M-x jedi:install-server RET
-       ;; Then open Python file.
-       (use-package jedi
-     	:ensure t
-     	:disabled t
-     	:defer 3
-     	:config
-     	;; Standard Jedi.el setting
-     	(add-hook 'python-mode-hook 'jedi:setup)
-     	(setq jedi:complete-on-dot t))
+	   ;;; Python Jedi
+	   ;; From emacs-jedi readme
+	   ;; Type:
+	   ;;     M-x jedi:install-server RET
+	   ;; Then open Python file.
+	   (use-package jedi
+		:ensure t
+		:defer 3
+		:init
+		;; Standard Jedi.el setting
+		(add-hook 'python-mode-hook 'jedi:setup)
+		(add-hook 'python-mode-hook 'jedi:ac-setup)
+		(setq jedi:complete-on-dot t))
      #+END_SRC
 
 **** Company Jedi
      #+BEGIN_SRC emacs-lisp
-       ;; company-jedi
-       ;; Need to install jedi server
-       ;; M-x jedi:install-server RET
-       (use-package company-jedi
-     	:ensure t
-     	:disabled t
-     	:config
-     	(defun my/python-mode-hook ()
-           (add-to-list 'company-backends 'company-jedi))
+	   ;; company-jedi
+	   ;; Need to install jedi server
+	   ;; M-x jedi:install-server RET
+	   (use-package company-jedi
+		:ensure t
+		:disabled t
+		:config
+		(defun my/python-mode-hook ()
+		  (add-to-list 'company-backends 'company-jedi))
 
-     	(add-hook 'python-mode-hook 'my/python-mode-hook))
+		(add-hook 'python-mode-hook 'my/python-mode-hook))
      #+END_SRC
 
 **** Flycheck
      #+BEGIN_SRC emacs-lisp
-       ;; Flycheck
-       (use-package flycheck
-     	:ensure t
-     	:diminish flycheck-mode
-     	:config
-     	(global-flycheck-mode t))
+	   ;; Flycheck
+	   (use-package flycheck
+		:ensure t
+		:diminish flycheck-mode
+		:init
+		(global-flycheck-mode t))
      #+END_SRC
 
 *** Elpy
