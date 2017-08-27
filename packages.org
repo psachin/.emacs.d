@@ -244,22 +244,23 @@
 *** IRC
 **** Weechat config
 	 #+BEGIN_SRC emacs-lisp
-       ;; Load weechat.el
-       ;; Need to setup relay server:
-       ;; https://www.weechat.org/files/doc/stable/weechat_user.en.html#relay_weechat_protocol
-       ;; Default args:
-       ;; - host: localhost
-       ;; - port: 9000
-       ;; - mode: plain
-       ;; - password: mypassword
-       ;;; Code:
-       (use-package weechat
-     	:defer 3
-     	:ensure t
-     	:config
-     	(setq completion-ignore-case t)
-     	(unless (weechat-relay-connected-p)
-           (weechat-connect weechat-host-default weechat-port-default "mypassword" 'plain)))
+	   ;; Load weechat.el
+	   ;; Need to setup relay server:
+	   ;; https://www.weechat.org/files/doc/stable/weechat_user.en.html#relay_weechat_protocol
+	   ;; Default args:
+	   ;; - host: localhost
+	   ;; - port: 9000
+	   ;; - mode: plain
+	   ;; - password: mypassword
+	   ;;; Code:
+	   (use-package weechat
+		 :defer 3
+		 :ensure t
+		 :config
+		 (setq completion-ignore-case t)
+		 (unless (weechat-relay-connected-p)
+		   (ignore-errors
+			 (weechat-connect weechat-host-default weechat-port-default "mypassword" 'plain))))
 	 #+END_SRC
 
 ** Manual
