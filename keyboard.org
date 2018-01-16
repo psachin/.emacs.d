@@ -3,33 +3,22 @@
    - Switch buffer
      #+BEGIN_SRC emacs-lisp
        ;; Use F7 to navigate buffers
-       (defun switch_buffer ()
-         "switch to next window."
-         (interactive)
-           (other-window 1)
-           )
        (global-set-key (kbd "<f7>") 'switch_buffer)
      #+END_SRC
 
    - Kill buffer
      #+BEGIN_SRC emacs-lisp
        ;; set <F8> key to kill buffer
-
-       (defun kill_buffer ()
-         "kill THIS buffer."
-         (interactive)
-         (kill-buffer (buffer-name))
-         )
        (global-set-key (kbd "<f8>") 'kill_buffer)
      #+END_SRC
 
    - Window
      - Delete windows
        #+BEGIN_SRC emacs-lisp
-         ;; set <F9> key for delete present window
-         (global-set-key (kbd "<f9>") 'delete-window)
-         ;; set <F10> key for delete all other windows except THIS
-         (global-set-key (kbd "<f6>") 'delete-other-windows)
+	 ;; set <F9> key for delete present window
+	 (global-set-key (kbd "<f9>") 'delete-window)
+	 ;; set <F10> key for delete all other windows except THIS
+	 (global-set-key (kbd "<f6>") 'delete-other-windows)
        #+END_SRC
 
      - Manage window size
@@ -77,4 +66,10 @@
 
        ;; Enable iedit-mode
        (global-set-key (kbd "C-c i") 'iedit-mode)
+
+       ;; http://www.pement.org/emacs_tabs.htm
+       ;; (global-set-key (kbd "TAB") 'self-insert-command)
+
+       ;; ido-switch-buffer
+       (global-set-key (kbd "C-c e") 'psachin/ido-erc-buffer)
      #+END_SRC

@@ -14,7 +14,9 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package)
-  (package-install 'org))
+  (package-install 'org)
+  (package-install 'diminish)
+  (package-install 'bind-key))
 
 ;; From use-package Readme
 (eval-when-compile

@@ -3,6 +3,7 @@
    #+BEGIN_SRC emacs-lisp
      (appt-activate t)
      (setq appt-display-format 'window)
+     (setq appt-display-duration 60)
      (setq appt-audible t)
      (setq appt-message-warning-time 10)
    #+END_SRC

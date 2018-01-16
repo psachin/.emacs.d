@@ -167,3 +167,35 @@
             (concat "import " sframe-full-path))
            (message "Screenshot saved as %s" sframe-full-path)))
      #+END_SRC
+
+   - Use IDO to select ERC buffers. https://www.emacswiki.org/emacs/InteractivelyDoThings#toc4
+     #+BEGIN_SRC emacs-lisp
+       (defun psachin/ido-erc-buffer()
+	 (interactive)
+	 (switch-to-buffer
+	  (ido-completing-read "Channel:" 
+			       (save-excursion
+				 (delq
+				  nil
+				  (mapcar (lambda (buf)
+					    (when (buffer-live-p buf)
+					      (with-current-buffer buf
+						(and (eq major-mode 'erc-mode)
+						     (buffer-name buf)))))
+					  (buffer-list)))))))
+     #+END_SRC
+
+   - Other buffer functions
+     #+BEGIN_SRC emacs-lisp
+       (defun switch_buffer ()
+	 "switch to next window."
+	 (interactive)
+	 (other-window 1))
+     #+END_SRC
+
+     #+BEGIN_SRC emacs-lisp
+       (defun kill_buffer ()
+	 "kill THIS buffer."
+	 (interactive)
+	 (kill-buffer (buffer-name)))
+     #+END_SRC

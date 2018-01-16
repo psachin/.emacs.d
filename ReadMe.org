@@ -55,10 +55,7 @@
 
    Do not mess up =init.el=
    #+BEGIN_SRC emacs-lisp
-     ;; Me: Emacs..
-     ;; Emacs: Yes Master?
-     ;; Me: Put your customization inside custom.el. I don't want init.el to be messed up by you.
-     ;; Emacs: As you wish Master.
+     ;; Put customization inside custom.el. I don't want init.el to be messed up.
      (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
      (when (file-exists-p custom-file)
        (load custom-file))
@@ -67,7 +64,7 @@
    Turn of all decorations
    #+BEGIN_SRC emacs-lisp
      ;; Turn off windows decoration
-     (if window-system
+     (if (and (display-graphic-p) (eq (window-system) 'x))
          (progn
            (tool-bar-mode 0)
            (menu-bar-mode 0)
@@ -155,7 +152,7 @@
 
        ;; Turn on word wrap
        (add-hook 'text-mode-hook '(lambda ()
-                                    (auto-fill-mode t)))
+				    (auto-fill-mode t)))
 
        ;; Enable subword for all programing modes
        (add-hook 'prog-mode-hook 'subword-mode)
@@ -173,6 +170,10 @@
        ;; Expand some words and auto-correct
        (setq save-abbrevs 'silently)
        (setq-default abbrev-mode t)
+
+       ;; Spell check
+       ;; Keyboard shortcut to check spelling at point: M-$
+       (setq flyspell-mode t)
      #+END_SRC
 
    - Dired
@@ -255,6 +256,19 @@
                    (dired-omit-mode 1)))
      #+END_SRC
 
+   - Buffer
+     #+BEGIN_SRC emacs-lisp
+       (setq ibuffer-saved-filter-groups
+             (quote (("default"
+                      ("erc" (mode . erc-mode))))))
+
+       (add-hook 'ibuffer-mode-hook
+                 (lambda ()
+                   (ibuffer-switch-to-saved-filter-groups "default")))
+
+       (ido-mode 'buffer)
+     #+END_SRC
+
    - Start Emacs server
      #+BEGIN_SRC emacs-lisp
        ;; Start Emacs server
@@ -263,7 +277,23 @@
          (server-start))
      #+END_SRC
 
-** [[./myorgmode.org][Org Mode]]
+   - Keeping secrets
+     #+BEGIN_SRC emacs-lisp
+       (setq epg-gpg-program "gpg2")
+       (setq auth-source-debug t)
+       (setq auth-sources
+	   '((:source "~/.emacs.d/secrets/.authinfo.gpg")))
+     #+END_SRC
+
+     =~/.emacs.d/secrets/.authinfo.gpg= file looks like below
+     #+BEGIN_SRC sh
+       machine irc.freenode.net login psachin password MYPASSWORD
+     #+END_SRC
+
+     Note: Create and save file using GNU Emacs. It will ask to
+     select your GnuPG key while saving
+
+** [[./myorgmode.org][Org mode]]
    Org mode customizations
    #+BEGIN_SRC emacs-lisp
      ;;; Load org.el
@@ -295,11 +325,18 @@
      (org-babel-load-file (concat user-emacs-directory "keyboard.org"))
    #+END_SRC
 
-** [[./custom_functions.org][Custom Functions]]
+** [[./custom_functions.org][Custom functions]]
    All my custom functions
    #+BEGIN_SRC emacs-lisp
      ;;; Load custom_functions.el
      (org-babel-load-file (concat user-emacs-directory "custom_functions.org"))
+   #+END_SRC
+
+** [[./irc.org][IRC]]
+   ERC configuration
+   #+BEGIN_SRC emacs-lisp
+     ;;; Load irc.el
+     (org-babel-load-file (concat user-emacs-directory "irc.org"))
    #+END_SRC
 
 ** [[./mytime.org][My time]]
@@ -315,4 +352,4 @@
    #+BEGIN_SRC emacs-lisp
      ;;; Load beta.el
      (org-babel-load-file (concat user-emacs-directory "beta.org"))
-   #+END_SRC
+   #+END_SRC   

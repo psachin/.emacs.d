@@ -26,7 +26,7 @@
       (defalias 'eb 'eval-buffer)
 
       ;; List buffers
-      (defalias 'lb 'ibuffer)
+      (defalias 'lb 'multi-isearch-buffers)
     #+END_SRC
 
   - File

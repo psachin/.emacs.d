@@ -5,26 +5,26 @@
     #+BEGIN_SRC emacs-lisp
       ;; Yasnippet
       (use-package yasnippet
-    	:ensure t
-    	:diminish yas-minor-mode
-    	:config
-    	(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-    	(yas-global-mode 1))
+	:ensure t
+	:diminish yas-minor-mode
+	:config
+	(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+	(yas-global-mode 1))
     #+END_SRC
 
 *** insert-shebang
     #+BEGIN_SRC emacs-lisp
       ;; insert-shebang
       (use-package insert-shebang
-    	:ensure t
-    	:pin melpa-stable
-    	:config
-    	'(insert-shebang-file-types
-          (quote
-           (("py" . "python")
-    		("sh" . "bash")
-    		("pl" . "perl")
-    		("rb" . "ruby")))))
+	:ensure t
+	:pin melpa-stable
+	:config
+	'(insert-shebang-file-types
+	  (quote
+	   (("py" . "python")
+	    ("sh" . "bash")
+	    ("pl" . "perl")
+	    ("rb" . "ruby")))))
     #+END_SRC
 
 *** autopair
@@ -42,18 +42,18 @@
     #+BEGIN_SRC emacs-lisp
       ;; Magit
       (use-package magit
-    	:ensure t
-    	:no-require t
-    	:diminish magit-minor-mode)
+	:ensure t
+	:no-require t
+	:diminish magit-minor-mode)
     #+END_SRC
 
 *** Git time-machine
     #+BEGIN_SRC emacs-lisp
       ;; Git Time Machine
       (use-package git-timemachine
-    	:ensure t
-    	:defer 5
-    	:diminish git-timemachine-minor-mode)
+	:ensure t
+	:defer 5
+	:diminish git-timemachine-minor-mode)
     #+END_SRC
 
 *** Company mode
@@ -75,22 +75,6 @@
     	(ac-config-default))
     #+END_SRC
 
-*** Auto complete ispell
-    #+BEGIN_SRC emacs-lisp
-      ;; ac-ispell
-      (use-package ac-ispell
-    	:ensure t
-    	:diminish ac-ispell-mode
-    	:config
-    	(custom-set-variables
-    	 '(ac-ispell-requires 4)
-    	 '(ac-ispell-fuzzy-limit 4))
-
-    	(eval-after-load "auto-complete"
-          '(progn
-    		 (ac-ispell-setup))))
-    #+END_SRC
-
 *** Python
     #+BEGIN_SRC emacs-lisp
       ;; Python mode
@@ -101,81 +85,83 @@
 
 **** Python Jedi
      #+BEGIN_SRC emacs-lisp
-	   ;;; Python Jedi
-	   ;; From emacs-jedi readme
-	   ;; Type:
-	   ;;     M-x jedi:install-server RET
-	   ;; Then open Python file.
-	   (use-package jedi
-		:ensure t
-		:defer 3
-		:init
-		;; Standard Jedi.el setting
-		(add-hook 'python-mode-hook 'jedi:setup)
-		(add-hook 'python-mode-hook 'jedi:ac-setup)
-		(setq jedi:complete-on-dot t))
+       ;;; Python Jedi
+       ;; From emacs-jedi readme
+       ;; Type:
+       ;;     M-x jedi:install-server RET
+       ;; Then open Python file.
+       (use-package jedi
+	 :ensure t
+	 :defer 3
+	 :init
+	 ;; Standard Jedi.el setting
+	 (add-hook 'python-mode-hook 'jedi:setup)
+	 (add-hook 'python-mode-hook 'jedi:ac-setup)
+	 (setq jedi:complete-on-dot t))
      #+END_SRC
 
 **** Company Jedi
      #+BEGIN_SRC emacs-lisp
-	   ;; company-jedi
-	   ;; Need to install jedi server
-	   ;; M-x jedi:install-server RET
-	   (use-package company-jedi
-		:ensure t
-		:disabled t
-		:config
-		(defun my/python-mode-hook ()
-		  (add-to-list 'company-backends 'company-jedi))
+       ;; company-jedi
+       ;; Need to install jedi server
+       ;; M-x jedi:install-server RET
+       (use-package company-jedi
+	 :ensure t
+	 :disabled t
+	 :config
+	 (defun psachin/python-mode-hook ()
+	   (add-to-list 'company-backends 'company-jedi))
 
-		(add-hook 'python-mode-hook 'my/python-mode-hook))
+	 (add-hook 'python-mode-hook 'psachin/python-mode-hook))
      #+END_SRC
 
 **** Flycheck
      #+BEGIN_SRC emacs-lisp
-	   ;; Flycheck
-	   (use-package flycheck
-		:ensure t
-		:diminish flycheck-mode
-		:init
-		(global-flycheck-mode t))
+       ;; Flycheck
+       (use-package flycheck
+	 :ensure t
+	 :diminish flycheck-mode
+	 :config
+	 (global-flycheck-mode t))
      #+END_SRC
 
 *** Elpy
     #+BEGIN_SRC emacs-lisp
       ;; Elpy
       (use-package elpy
-    	:ensure t
-    	:diminish elpy-mode
-    	:config
-    	(elpy-enable)
-    	;; Don't use flymake if flycheck is available
-    	(when (require 'flycheck nil t)
-          (setq elpy-module
-    			(delq 'elpy-module-flymake elpy-modules)))
-    	;; Enable flycheck and pep8
-    	(add-hook 'elpy-mode-hook 'flycheck-mode)
+	:ensure t
+	:diminish elpy-mode
+	:init
+	(setq
+	 ;; Referred from:
+	 ;; https://github.com/ajschumacher/.emacs.d/blob/master/init.el
+	 ;; sudo dnf install python-jedi python3-jedi -y
+	 elpy-rpc-backend "jedi"
+	 help-at-pt-timer-delay 0.9
+	 help-at-pt-display-when-idle t
+	 tab-width 4)
 
-    	;; Following gives problem when python code used in reveal.js
-    	;; presentation.
-    	;; (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+	:config
+	(elpy-enable)
+	;; Don't use flymake if flycheck is available
+	(when (require 'flycheck nil t)
+	  (setq elpy-module
+		(delq 'elpy-module-flymake elpy-modules)))
 
-    	;; Shamlessly copied from
-    	;; https://github.com/ajschumacher/.emacs.d/blob/master/init.el
-    	(custom-set-variables
-    	 ;; sudo dnf install python-jedi python3-jedi -y
-    	 '(elpy-rpc-backend "jedi")
-    	 '(help-at-pt-display-when-idle (quote (flymake-overlay)) nil (help-at-pt))
-    	 '(help-at-pt-timer-delay 0.9)
-    	 '(tab-width 4))
+	;; Enable flycheck and pep8
+	(add-hook 'elpy-mode-hook 'flycheck-mode)
 
-    	;; Do not highlight indentation
-    	(delete 'elpy-module-highlight-indentation elpy-modules)
+	;; Following gives problem when python code used in reveal.js
+	;; presentation.
+	;; (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
-    	;; I use this keys for window (re)size
-    	(eval-after-load "elpy"
-    	  '(cl-dolist (key '("C-<up>" "C-<down>" "C-<left>" "C-<right>"))
-    		 (define-key elpy-mode-map (kbd key) nil))))
+	;; Do not highlight indentation
+	(delete 'elpy-module-highlight-indentation elpy-modules)
+
+	;; I use this keys for window (re)size
+	(eval-after-load "elpy"
+	  '(cl-dolist (key '("C-<up>" "C-<down>" "C-<left>" "C-<right>"))
+	     (define-key elpy-mode-map (kbd key) nil))))
     #+END_SRC
 
 *** Undo tree
@@ -190,10 +176,11 @@
      #+BEGIN_SRC emacs-lisp
        ;; flymake-ruby
        (use-package flymake-ruby
-     	:ensure t
-     	:config
-     	(add-hook 'ruby-mode-hook 'flymake-ruby-load)
-     	(setq ruby-deep-indent-paren nil))
+	 :ensure t
+	 :init
+	 (setq ruby-deep-indent-paren nil)
+	 :config
+	 (add-hook 'ruby-mode-hook 'flymake-ruby-load))
      #+END_SRC
 
 **** robe
@@ -221,47 +208,48 @@
 *** Presentation
 **** reveal.js
      #+BEGIN_SRC emacs-lisp
-	   ;; ox-reveal
-	   (use-package ox-reveal
-		 :ensure t
-		 :pin melpa)
+       ;; ox-reveal
+       (use-package ox-reveal
+	 :ensure t
+	 :pin melpa)
 
-	   (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
-	   (setq org-reveal-mathjax t)
+       (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
+       (setq org-reveal-mathjax t)
 
-	   ;; htmlize
-	   (use-package htmlize
-		 :ensure t)
+       ;; htmlize
+       (use-package htmlize
+	 :ensure t)
      #+END_SRC
 
 *** Multiple-cursor
-	#+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp
       ;; Multiple cursors
       (use-package multiple-cursors
-    	:ensure t)
-	#+END_SRC
+	:ensure t)
+    #+END_SRC
 
 *** IRC
 **** Weechat config
-	 #+BEGIN_SRC emacs-lisp
-	   ;; Load weechat.el
-	   ;; Need to setup relay server:
-	   ;; https://www.weechat.org/files/doc/stable/weechat_user.en.html#relay_weechat_protocol
-	   ;; Default args:
-	   ;; - host: localhost
-	   ;; - port: 9000
-	   ;; - mode: plain
-	   ;; - password: mypassword
-	   ;;; Code:
-	   (use-package weechat
-		 :defer 3
-		 :ensure t
-		 :config
-		 (setq completion-ignore-case t)
-		 (unless (weechat-relay-connected-p)
-		   (ignore-errors
-			 (weechat-connect weechat-host-default weechat-port-default "mypassword" 'plain))))
-	 #+END_SRC
+     #+BEGIN_SRC emacs-lisp
+       ;; Load weechat.el
+       ;; Need to setup relay server:
+       ;; https://www.weechat.org/files/doc/stable/weechat_user.en.html#relay_weechat_protocol
+       ;; Default args:
+       ;; - host: localhost
+       ;; - port: 9000
+       ;; - mode: plain
+       ;; - password: mypassword
+       ;;; Code:
+       (use-package weechat
+	 :disabled
+	 :defer 3
+	 :ensure t
+	 :config
+	 (setq completion-ignore-case t)
+	 (unless (weechat-relay-connected-p)
+	   (ignore-errors
+	     (weechat-connect weechat-host-default weechat-port-default "mypassword" 'plain))))
+     #+END_SRC
 
 ** Manual
 *** [[https://github.com/jekor/hidepw][hidepw]]: Emacs minor mode for hiding passwords(anti-shoulder-surfing)

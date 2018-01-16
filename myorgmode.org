@@ -1,46 +1,74 @@
 * Org mode customizations
 ** Agenda
    - Add workflow state in org-mode
-	 #+BEGIN_SRC emacs-lisp
+     #+BEGIN_SRC emacs-lisp
        (setq-default org-todo-keywords
-     				'((sequence
-                        "TODO(t)"
-                        "FIXME(f)"
-                        "IN-PROGRESS(p)"
-                        "NEXT(n)"
-                        "WAITING(w)"
-                        "DONE(d)"
-                        "CANCELLED(c)")))
-	 #+END_SRC
+		     '((sequence
+			"TODO(t)"
+			"FIXME(f)"
+			"IN-PROGRESS(p)"
+			"NEXT(n)"
+			"WAITING(w)"
+			"DONE(d)"
+			"CANCELLED(c)")))
+     #+END_SRC
 
    - This will create a date-time stamp for tasks marked as 'DONE'.
-	 #+BEGIN_SRC emacs-lisp
+     #+BEGIN_SRC emacs-lisp
        ;; Time finished
        (setq org-log-done 'time)
        ;; Closing note
        (setq org-log-done 'note)
-	 #+END_SRC
+     #+END_SRC
 
    - Org agenda files
-	 #+BEGIN_SRC emacs-lisp
+     #+BEGIN_SRC emacs-lisp
        (setq org-agenda-files (quote ("~/agenda/work" "~/agenda/todo")))
-	 #+END_SRC
+     #+END_SRC
 
 ** Babel
 *** Org babel languages
-	#+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp
       (org-babel-do-load-languages
        'org-babel-load-languages
        '((emacs-lisp . t)
-    	 (python . t)
-    	 (C . t)
-    	 (calc . t)
-    	 (latex . t)
-    	 (java . t)
-    	 (ruby . t)
-    	 (lisp . t)
-    	 (scheme . t)
-    	 (shell . t)
-    	 (sqlite . t)
-    	 (js . t)))
-	#+END_SRC
+	 (python . t)
+	 (C . t)
+	 (calc . t)
+	 (latex . t)
+	 (java . t)
+	 (ruby . t)
+	 (lisp . t)
+	 (scheme . t)
+	 (shell . t)
+	 (sqlite . t)
+	 (js . t)))
+    #+END_SRC
+
+** [WIP] Publishing
+*** Blog
+    #+BEGIN_SRC emacs-lisp
+      ;;; package -- summary
+      ;;; Commentary:
+      ;;; Code:
+      (require 'ox-publish)
+      (setq org-publish-project-alist
+	    '(
+	      ("org" :components ("org-notes" "org-static"))
+	      ("org-notes"
+	       :base-directory "~/tmp/publishing/org/"
+	       :base-extension "org"
+	       :publishing-directory "~/tmp/publishing/public_html/"
+	       :recursive t
+	       :publishing-function org-html-publish-to-html
+	       :headline-levels 4
+	       :auto-preamble t
+	       )
+	      ("org-static"
+	       :base-directory "~/tmp/publishing/org/"
+	       :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+	       :publishing-directory "~/tmp/publishing/public_html/"
+	       :recursive t
+	       :publishing-function org-publish-attachment
+	       )))
+    #+END_SRC
