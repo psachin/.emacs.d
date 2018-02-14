@@ -6,99 +6,100 @@
      ;; C-c C-SPACE: Access last channel
      ;; C-c C-n: Get all nicknames
      ;; C-h m: describe mode
-     ;; C-c C-b: ido ERC buffers. See keyboard.org
+     ;; C-c C-b: ERC buffers See ./keyboard.org
+     ;; C-c C-e: ido ERC buffers
      (use-package erc
-          :ensure nil
-          :defer t
-          :custom-face
-          (erc-input-face ((t (:foreground "chartreuse"))))
-          (erc-my-nick-face ((t (:foreground "deep sky blue" :weight bold))))
-          :init
-          (setq erc-user-full-name "Sachin Patil"
-                erc-nick "psachin"
-                erc-away-nickname "psachin|away"
-                erc-email-userid "iclcoolster@gmail.com"
-                erc-keywords (quote("training" "session" "swift" "emacs"))
-                erc-current-nick-highlight-type 'all
-                erc-notify-list (quote ("jd" "cschwede"))
-                erc-autojoin-enable t
-                erc-autojoin-channels-alist
-                (quote
-                 (("oftc" "#tor" "#kernelnewbies" "#kernel-outreachy")
-                  ("freenode" "#emacs" "#emacs-beginners" "#g4h" "#gentoo"
-                   "#gnus" "#guix" "#fsf" "#manageiq" "#openstack-101"
-                   "#openstack-cinder" "#openstack-dev" "#openstack-infra"
-                   "#openstack-meeting" "#openstack-meeting-1" "#openstack-meeting-2"
-                   "#openstack-meeting-3" "#openstack-meeting-4" "#openstack-nova"
-                   "#openstack-swift" "#openstack-telemetry" "#weechat" "#sopel"
-                   "#weechat-el" "#upstream-university" "#asteroid"
-                   "##university-outreach" "#vcloud10" "#openshift-dev" "#tripleo"
-                   "#sosreport" "#python" "#sailfishos" "#sailfishos-porters" "#mer"
-                   "#nemomobile" "#thoughtbot" "#linuxjournal")
-                  ("GIMPNet" "#outreachy")
-                  ("redhat" "#vcloud9" "#BB8-test" "#sbr-stack"
-                   "#sbr-cfme" "#cloudforms" "#cfme-eng" "#sbr-stack-frontline"
-                   "#cee" "#0day" "#emerging-tech" "#gss-pune" "#gss" "#insights"
-                   "#python-maint" "#rhos-dev" "#rhos-pidone" "#rhos-telemetry")))
+	  :ensure nil
+	  :defer t
+	  :custom-face
+	  (erc-input-face ((t (:foreground "chartreuse"))))
+	  (erc-my-nick-face ((t (:foreground "deep sky blue" :weight bold))))
+	  :init
+	  (setq erc-user-full-name "Sachin Patil"
+		erc-nick "psachin"
+		erc-away-nickname "psachin|away"
+		erc-email-userid "iclcoolster@gmail.com"
+		erc-keywords (quote("training" "session" "swift" "emacs"))
+		erc-current-nick-highlight-type 'all
+		erc-notify-list (quote ("jd" "cschwede"))
+		erc-autojoin-enable t
+		erc-autojoin-channels-alist
+		(quote
+		 (("oftc" "#tor" "#kernelnewbies" "#kernel-outreachy")
+		  ("freenode" "#emacs" "#emacs-beginners" "#g4h" "#gentoo"
+		   "#gnus" "#guix" "#fsf" "#manageiq" "#openstack-101"
+		   "#openstack-cinder" "#openstack-dev" "#openstack-infra"
+		   "#openstack-meeting" "#openstack-meeting-1" "#openstack-meeting-2"
+		   "#openstack-meeting-3" "#openstack-meeting-4" "#openstack-nova"
+		   "#openstack-swift" "#openstack-telemetry" "#weechat" "#sopel"
+		   "#weechat-el" "#upstream-university" "#asteroid"
+		   "##university-outreach" "#vcloud10" "#openshift-dev" "#tripleo"
+		   "#sosreport" "#python" "#sailfishos" "#sailfishos-porters" "#mer"
+		   "#nemomobile" "#thoughtbot" "#linuxjournal")
+		  ("GIMPNet" "#outreachy")
+		  ("redhat" "#vcloud9" "#BB8-test" "#sbr-stack"
+		   "#sbr-cfme" "#cloudforms" "#cfme-eng" "#sbr-stack-frontline"
+		   "#cee" "#0day" "#emerging-tech" "#gss-pune" "#gss" "#insights"
+		   "#python-maint" "#rhos-dev" "#rhos-pidone" "#rhos-telemetry")))
 
-                erc-modules
-                (quote
-                 (autojoin button completion fill irccontrols list match
-                           menu move-to-prompt netsplit networks noncommands notify
-                           notifications readonly replace ring services
-                           smiley sound stamp spelling track))
+		erc-modules
+		(quote
+		 (autojoin button completion fill irccontrols list match
+			   menu move-to-prompt netsplit networks noncommands notify
+			   notifications readonly replace ring services
+			   smiley sound stamp spelling track))
 
-                erc-hide-list (quote("PART" "QUIT" "JOIN"))
-                erc-notice-prefix "-"
-                erc-prompt "-->"
+		erc-hide-list (quote("PART" "QUIT" "JOIN"))
+		erc-notice-prefix "-"
+		erc-prompt "-->"
 
-                ;; Logging
-                erc-enable-logging t
-                erc-log-mode t
-                erc-log-channels-directory "~/.erc/logs/"
-                erc-save-buffer-on-part t
-                erc-log-insert-log-on-open t
-                erc-log-write-after-insert t
-                erc-log-write-after-send t
-
-
-                erc-prompt-for-password nil
-                erc-prompt-for-nickserv-password nil
-                erc-public-away-p 0
-                erc-try-new-nick-p t
-                erc-server-reconnect-timeout 30
-                erc-rename-buffers t
-                erc-interpret-mirc-color t
-
-                ;; Tracking buffers
-                erc-track-disable t
-                erc-track-minor-mode t
-                erc-track-position-in-mode-line t
-                erc-track-visibility nil
-                erc-truncate-buffer-on-save t
-
-                ;; Do not flood current frame
-                erc-join-buffer 'bury)
+		;; Logging
+		erc-enable-logging t
+		erc-log-mode t
+		erc-log-channels-directory "~/.erc/logs/"
+		erc-save-buffer-on-part t
+		erc-log-insert-log-on-open t
+		erc-log-write-after-insert t
+		erc-log-write-after-send t
 
 
+		erc-prompt-for-password nil
+		erc-prompt-for-nickserv-password nil
+		erc-public-away-p 0
+		erc-try-new-nick-p t
+		erc-server-reconnect-timeout 30
+		erc-rename-buffers t
+		erc-interpret-mirc-color t
 
-          :config
-          ;; Logging
-          (add-hook 'erc-insert-post-hook 'erc-save-buffer-in-logs)
+		;; Tracking buffers
+		erc-track-disable t
+		erc-track-minor-mode t
+		erc-track-position-in-mode-line t
+		erc-track-visibility nil
+		erc-truncate-buffer-on-save t
 
-          ;; Enable ido for ERC buffers
-          (require 'ido)
-          (ido-mode 'buffers)
-          (setq ido-ignore-buffers '("^ "
-                                     "*Completions*"
-                                     "*Shell Command Output*"
-                                     "*Messages*"
-                                     "Async Shell Command"))
+		;; Do not flood current frame
+		erc-join-buffer 'bury)
 
-          ;; (when (not (ignore-errors (erc-server-process-alive "freenode")))
-          ;; (message "Re-connecting to irc.freenode.net"))
-          (erc :server "irc.freenode.net")
-          (erc :server "irc.oftc.net")
-          (erc :server "irc.gnome.org")
-          (erc :server "irc.devel.redhat.com"))
+
+
+	  :config
+	  ;; Logging
+	  (add-hook 'erc-insert-post-hook 'erc-save-buffer-in-logs)
+
+	  ;; Enable ido for ERC buffers
+	  (require 'ido)
+	  (ido-mode 'buffers)
+	  (setq ido-ignore-buffers '("^ "
+				     "*Completions*"
+				     "*Shell Command Output*"
+				     "*Messages*"
+				     "Async Shell Command"))
+
+	  ;; (when (not (ignore-errors (erc-server-process-alive "freenode")))
+	  ;; (message "Re-connecting to irc.freenode.net"))
+	  (erc :server "irc.freenode.net")
+	  (erc :server "irc.oftc.net")
+	  (erc :server "irc.gnome.org")
+	  (erc :server "irc.devel.redhat.com"))
    #+END_SRC

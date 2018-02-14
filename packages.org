@@ -28,15 +28,15 @@
     #+END_SRC
 
 *** autopair
-     #+BEGIN_SRC emacs-lisp
-       ;; autopair
-       (use-package autopair
-         :ensure t
-         :defer 2                              ; 2 seconds of delay
-         :diminish autopair-minor-mode
-         :config
-         (autopair-global-mode t))
-     #+END_SRC
+    #+BEGIN_SRC emacs-lisp
+      ;; autopair
+      (use-package autopair
+	:ensure t
+	:defer 2  ; 2 seconds of delay
+	:diminish autopair-minor-mode
+	:config
+	(autopair-global-mode t))
+    #+END_SRC
 
 *** Magit
     #+BEGIN_SRC emacs-lisp
@@ -126,6 +126,11 @@
      #+END_SRC
 
 *** Elpy
+    - Notes:
+      - To activate python virtualenv: =M-x pyvenv-activate=
+      - To Configure elpy: =M-x elpy-config=
+
+    Code
     #+BEGIN_SRC emacs-lisp
       ;; Elpy
       (use-package elpy
@@ -145,14 +150,13 @@
 	(elpy-enable)
 	;; Don't use flymake if flycheck is available
 	(when (require 'flycheck nil t)
-	  (setq elpy-module
-		(delq 'elpy-module-flymake elpy-modules)))
+	  (setq elpy-module (delq 'elpy-module-flymake elpy-modules)))
 
 	;; Enable flycheck and pep8
 	(add-hook 'elpy-mode-hook 'flycheck-mode)
 
-	;; Following gives problem when python code used in reveal.js
-	;; presentation.
+	;;; Following gives problem when python code used in reveal.js
+	;;; presentation.
 	;; (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
 	;; Do not highlight indentation
@@ -168,7 +172,7 @@
     #+BEGIN_SRC emacs-lisp
       ;; Undo tree
       (use-package undo-tree
-    	:ensure t)
+	:ensure t)
     #+END_SRC
 
 *** Ruby(on Rails)
@@ -193,17 +197,17 @@
      #+END_SRC
 
 *** Markdown
-	#+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp
       ;; markdown-mode
       (use-package markdown-mode
-    	:ensure t
-    	:commands (markdown-mode gfm-mode)
-    	:mode (("README\\.md\\'" . gfm-mode)
-               ("ReadMe\\.md\\'" . gfm-mode)
-               ("\\.md\\'" . markdown-mode)
-               ("\\.markdown\\'" . markdown-mode))
-    	:init (setq markdown-command "multimarkdown"))
-	#+END_SRC
+	:ensure t
+	:commands (markdown-mode gfm-mode)
+	:mode (("README\\.md\\'" . gfm-mode)
+	       ("ReadMe\\.md\\'" . gfm-mode)
+	       ("\\.md\\'" . markdown-mode)
+	       ("\\.markdown\\'" . markdown-mode))
+	:init (setq markdown-command "multimarkdown"))
+    #+END_SRC
 
 *** Presentation
 **** reveal.js
