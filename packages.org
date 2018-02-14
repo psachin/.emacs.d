@@ -129,6 +129,7 @@
     - Notes:
       - To activate python virtualenv: =M-x pyvenv-activate=
       - To Configure elpy: =M-x elpy-config=
+      - Ref: https://realpython.com/blog/python/emacs-the-best-python-editor/
 
     Code
     #+BEGIN_SRC emacs-lisp
