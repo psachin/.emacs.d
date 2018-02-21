@@ -176,7 +176,7 @@
        (setq flyspell-mode t)
 
        ;; Line number
-       (setq global-linum-mode t)
+       (global-linum-mode t)
      #+END_SRC
 
    - Dired
