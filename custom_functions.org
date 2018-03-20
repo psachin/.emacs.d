@@ -199,3 +199,11 @@
 	 (interactive)
 	 (kill-buffer (buffer-name)))
      #+END_SRC
+
+   - Turn off line number
+     #+BEGIN_SRC emacs-lisp
+       (defun psachin/turn-off-linum ()
+	 "Turn off linum for ERC buffers."
+	 (interactive)
+	 (linum-mode 0))
+     #+END_SRC

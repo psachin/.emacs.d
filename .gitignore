@@ -12,6 +12,7 @@ tramp
 *.tex
 session.*
 !init.el
+secrets/
 
 # Data
 *.data

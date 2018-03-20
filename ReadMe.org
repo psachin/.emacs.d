@@ -49,7 +49,8 @@
    Change user name and Email
    #+BEGIN_SRC emacs-lisp
      ;; Load my details
-     (setq user-full-name "Sachin"
+     (setq user-full-name "Sachin Patil"
+	   user-login-name "psachin"
 	   user-mail-address "psachin@redhat.com")
    #+END_SRC
 
@@ -187,17 +188,21 @@
        (setq dired-omit-files "^\\...+$")
 
        (add-hook 'dired-mode-hook
-                 (lambda ()
-                   ;; Set dired-x buffer-local variables here.  For example:
-                   (dired-omit-mode 1)
-                   ))
+		 (lambda ()
+		   ;; Set dired-x buffer-local variables here.  For example:
+		   (dired-omit-mode 1)
+		   ))
+     #+END_SRC
 
-       ;; Auto complete with ignore case
-       (setq-default read-buffer-completion-ignore-case t)
-       (setq-default read-file-name-completion-ignore-case t)
-
+   - Backup
+     #+BEGIN_SRC emacs-lisp
        ;; Save all backup files in user space
-       (setq backup-directory-alist '((".*" . "~/.emacs.d/emacs-saves")))
+       (setq backup-directory-alist '((".*" . "~/.emacs.d/emacs-saves"))
+	     backup-by-copying t
+	     version-control t
+	     delete-old-versions t
+	     kept-new-versions 10
+	     kept-old-versions 10)
      #+END_SRC
 
    - File
@@ -241,22 +246,16 @@
        ;; Modes for certain file extensions
        ;; add C++ mode for .ino files(Arduino files)
        (add-to-list 'auto-mode-alist
-                    '("\\.ino\\.pde\\'" . c++-mode)
-                    '("\\.h\\'" . c++-mode))
+		    '("\\.ino\\.pde\\'" . c++-mode)
+		    '("\\.h\\'" . c++-mode))
 
        ;; Enable Allman Style of indentation for C code. OpenSource for you, Jan 2014.
        (setq-default c-default-style "linux"
-                     c-basic-offset 4)
+		     c-basic-offset 4)
 
-
-       ;; hide DOT files with M-o
-       (require 'dired-x)
-       (setq dired-omit-files "^\\...+$")
-
-       (add-hook 'dired-mode-hook
-                 (lambda ()
-                   ;; Set dired-x buffer-local variables here.  For example:
-                   (dired-omit-mode 1)))
+       ;; Auto complete with ignore case
+       (setq-default read-buffer-completion-ignore-case t)
+       (setq-default read-file-name-completion-ignore-case t)
      #+END_SRC
 
    - Buffer

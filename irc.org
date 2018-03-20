@@ -8,13 +8,14 @@
      ;; C-h m: describe mode
      ;; C-c C-b: ERC buffers See ./keyboard.org
      ;; C-c C-e: ido ERC buffers
-     (setq erc-user-full-name "Sachin Patil"
-	   erc-nick "psachin"
-	   erc-away-nickname "psachin|away"
-	   erc-email-userid "iclcoolster@gmail.com"
+     (setq erc-user-full-name user-full-name
+	   erc-nick user-login-name
+	   erc-away-nickname (concat erc-nick "|away")
+	   erc-email-userid (concat erc-nick "@thisIsFakeAddr.com")
 	   erc-keywords (quote("training" "session" "swift" "emacs"))
 	   erc-current-nick-highlight-type 'all
-	   erc-notify-list (quote ("jd" "cschwede"))
+	   erc-pals (quote ("jd" "cschwede"))
+	   erc-notify-list erc-pals
 	   erc-autojoin-enable t
 	   erc-autojoin-channels-alist
 	   (quote
@@ -79,10 +80,14 @@
 
      (custom-set-faces
       '(erc-input-face ((t (:foreground "chartreuse"))))
-      '(erc-my-nick-face ((t (:foreground "deep sky blue" :weight bold)))))
+      '(erc-my-nick-face ((t (:foreground "deep sky blue" :weight bold))))
+      '(erc-prompt-face ((t (:foreground "lime green" :weight bold)))))
 
      ;; Logging
      (add-hook 'erc-insert-post-hook 'erc-save-buffer-in-logs)
+
+     ;; Turn off linum for ERC buffer
+     (add-hook 'erc-mode-hook 'psachin/turn-off-linum)
 
      ;; Enable ido for ERC buffers
      (require 'ido)
