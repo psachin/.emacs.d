@@ -298,7 +298,7 @@
 ** [[./myorgmode.org][Org mode]]
    Org mode customizations
    #+BEGIN_SRC emacs-lisp
-     ;;; Load org.el
+     ;;; Load myorgmode.el
      (org-babel-load-file (concat user-emacs-directory "myorgmode.org"))
    #+END_SRC
 

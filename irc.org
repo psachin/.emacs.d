@@ -39,9 +39,10 @@
 	   erc-modules
 	   (quote
 	    (autojoin button completion fill irccontrols list match
-		      menu move-to-prompt netsplit networks noncommands notify
-		      notifications readonly replace ring services
-		      smiley sound stamp spelling track))
+		      menu move-to-prompt netsplit networks
+		      noncommands notify notifications readonly
+		      replace ring services smiley sound stamp
+		      spelling track))
 
 	   erc-hide-list (quote("PART" "QUIT" "JOIN"))
 	   erc-notice-prefix "-"
@@ -73,6 +74,9 @@
 
 	   ;; Do not flood current frame
 	   erc-join-buffer 'bury
+
+	   ;; Timestamp position
+	   erc-insert-timestamp-function 'erc-insert-timestamp-left
 
 	   ;; Show channel name in notification.
 	   ;; Please apply: https://gist.github.com/psachin/f07c0741d0de4f2cf914eebbd45bddfc
