@@ -41,9 +41,6 @@
    - Feel free to send Pull Requests
    - Create new issues
 
-** Gnus
-   - Optionally edit =gnus.el= and copy the file as =~/.gnus.el=
-
 ** Minimal config
 
    Change user name and Email
@@ -51,7 +48,8 @@
      ;; Load my details
      (setq user-full-name "Sachin Patil"
 	   user-login-name "psachin"
-	   user-mail-address "psachin@redhat.com")
+	   user-mail-address "iclcoolster@gmail.com"
+	   smtpmail-smtp-user user-mail-address)
    #+END_SRC
 
    Do not mess up =init.el=
@@ -287,14 +285,28 @@
 	   '((:source "~/.emacs.d/secrets/.authinfo.gpg")))
      #+END_SRC
 
-     =~/.emacs.d/secrets/.authinfo.gpg= file looks like below
-     #+BEGIN_SRC sh
-       machine irc.freenode.net login psachin password MYPASSWORD
+     =~/.emacs.d/secrets/.authinfo.gpg= file looks like below,
+     - For ERC
+       #+BEGIN_SRC sh
+	 machine irc.freenode.net login IRC_NICK password IRC_PASSWORD
+       #+END_SRC
+
+     - For Gmail
+       #+BEGIN_SRC sh
+	 machine imap.gmail.com login USER_EMAIL_ADDRESS password APP_PASSWORD port 993
+	 machine smtp.gmail.com login USER_EMAIL_ADDRESS password APP_PASSWORD port 587
+       #+END_SRC
+
+       Note: Create and save file using GNU Emacs. It will ask to
+       select your GnuPG key while saving. Refer [[http://psachin.github.io/blog/using-git-credential/][Google's 2 Step
+       Verification]] to configure APP_PASSWORD.
+
+** [[./gnus.org][Gnus]]
+   - A message reader
+     #+BEGIN_SRC emacs-lisp
+       ;;; Load gnus.el
+       (org-babel-load-file (concat user-emacs-directory "gnus.org"))
      #+END_SRC
-
-     Note: Create and save file using GNU Emacs. It will ask to
-     select your GnuPG key while saving
-
 ** [[./myorgmode.org][Org mode]]
    Org mode customizations
    #+BEGIN_SRC emacs-lisp
