@@ -23,7 +23,8 @@
 
    - Org agenda files
      #+BEGIN_SRC emacs-lisp
-       (setq org-agenda-files (quote ("~/agenda/work" "~/agenda/todo")))
+       (setq org-agenda-files (quote ("~/agenda/work"
+				      "~/agenda/todo")))
      #+END_SRC
 
 ** Babel

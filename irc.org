@@ -29,12 +29,13 @@
 	      "#weechat-el" "#upstream-university" "#asteroid"
 	      "##university-outreach" "#vcloud10" "#openshift-dev" "#tripleo"
 	      "#sosreport" "#python" "#sailfishos" "#sailfishos-porters" "#mer"
-	      "#nemomobile" "#thoughtbot" "#linuxjournal")
+	      "#nemomobile" "#thoughtbot" "#linuxjournal" "#opensource.com")
 	     ("GIMPNet" "#outreachy")
 	     ("redhat" "#vcloud9" "#BB8-test" "#sbr-stack"
 	      "#sbr-cfme" "#cloudforms" "#cfme-eng" "#sbr-stack-frontline"
-	      "#cee" "#0day" "#emerging-tech" "#gss-pune" "#gss" "#insights"
-	      "#python-maint" "#rhos-dev" "#rhos-pidone" "#rhos-telemetry")))
+	      "#sbr-storage" "#cee" "#0day" "#emerging-tech" "#gss-pune" "#gss"
+	      "#insights" "#python-maint" "#rhos-dev" "#rhos-pidone"
+	      "#rhos-telemetry")))
 
 	   erc-modules
 	   (quote
