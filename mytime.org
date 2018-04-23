@@ -7,3 +7,28 @@
      (setq appt-audible t)
      (setq appt-message-warning-time 10)
    #+END_SRC
+
+** Todo and diary
+   #+BEGIN_SRC emacs-lisp
+     (setq todo-include-in-diary t)
+     (setq todo-always-add-time-string t)
+     (setq org-agenda-include-diary t)
+     (setq org-deadline-warning-days 3)
+   #+END_SRC
+
+** Notes
+   | Function              | Keys        | Description            |
+   |-----------------------+-------------+------------------------|
+   | (org-todo)            | C-c C-t     |                        |
+   | (org-todo-list)       | C-c a-t     |                        |
+   | (org-schedule)        | C-c C-s     |                        |
+   | (org-deadline)        | C-c C-d     |                        |
+   | (org-check-deadlines) | C-c / d     |                        |
+   | (org-clock-in)        | C-c C-x C-i |                        |
+   | (org-clock-out)       | C-c C-x C-o |                        |
+   | (org-clock-cancel)    | C-c C-x C-q |                        |
+   | (org-clock-goto)      | C-c C-x C-j | Jump to clocked task   |
+   | (org-clock-in-last)   | C-c C-x C-x | Restart clock          |
+   | (org-clock-display)   | C-c C-x C-d | Display time summary   |
+   | (org-clock-report)    | C-c C-x C-r | Display tabular report |
+   |                       | C-c C-x c   | Show column view       |
