@@ -240,6 +240,19 @@
 	 :ensure t)
      #+END_SRC
 
+**** org-tree-slide
+     #+BEGIN_SRC emacs-lisp
+       ;; Notes:
+       ;; 1. Goto org file
+       ;; 2. Enable org-tree-slide-mode
+       ;; 3. Keys: C->, C-<
+       (use-package org-tree-slide
+	 :ensure t
+	 :init
+	 (when (require 'org-tree-slide nil t)
+	   (org-tree-slide-presentation-profile)))
+     #+END_SRC
+
 *** Multiple-cursor
     #+BEGIN_SRC emacs-lisp
       ;; Multiple cursors
