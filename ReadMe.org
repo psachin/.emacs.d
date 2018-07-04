@@ -1,2 +1,2 @@
 * I moved to GitLab.com
-  Due to [[https://blogs.microsoft.com/blog/2018/06/04/microsoft-github-empowering-developers/][this]] reason no further development will be push to GitHub. Please visit https://gitlab.com/psachin/.emacs.d to see latest changes.
+  Due to [[https://blogs.microsoft.com/blog/2018/06/04/microsoft-github-empowering-developers/][this]] reason no further development will be push to GitHub. Please visit https://gitlab.com/psachin/emacs.d to see latest changes.
